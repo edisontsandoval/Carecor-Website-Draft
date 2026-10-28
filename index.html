@@ -376,13 +376,11 @@ body.show-cz .cz::after{content:"Clear zone: height of the \201Co\201D on every 
 .soc-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .soc-links a{display:grid;gap:4px;padding:18px;border-radius:10px;background:var(--mist);text-decoration:none;color:var(--navy);transition:background-color .15s}
 .soc-links a:hover{background:var(--mist-2)}
-.pref-src{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--navy);background:var(--white);transition:border-color .2s,box-shadow .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
-.pref-src > span{display:grid;gap:2px;flex:1;min-width:0}
-.pref-src > svg{width:22px;height:22px;flex:none}
-.pref-src > svg:first-child{color:var(--orange);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
-.pref-src > svg:last-child{color:var(--purple);width:18px;height:18px}
-.pref-src:hover{border-color:var(--orange)}
-@media (hover:hover) and (pointer:fine){.pref-src:hover{transform:translateY(-2px);box-shadow:0 18px 36px -24px rgba(27,36,82,.5)}.pref-src:hover > svg:first-child{transform:rotate(72deg) scale(1.1)}}
+.pref-src{display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--white)}
+.pref-src p{margin:0;flex:1 1 180px;font-size:14px;color:var(--muted);max-width:none}
+.pref-badge{display:inline-flex;border-radius:12px;line-height:0;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.pref-badge img{width:169px;height:auto;display:block}
+@media (hover:hover) and (pointer:fine){.pref-badge:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(27,36,82,.5)}}
 .soc-links svg{width:24px;height:24px;color:var(--purple);margin-bottom:4px}
 .closing{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .closing > div{border-radius:12px;padding:clamp(26px,3.5vw,40px);display:grid;gap:14px;align-content:start}
@@ -1142,7 +1140,7 @@ PAGES.home=function(){
       '<a href="https://www.facebook.com/CarecorHealth/" target="_blank" rel="noopener">'+I.people+'<strong>Facebook</strong><span class="small muted">CarecorHealth</span></a>'+
       '<a href="https://www.linkedin.com/company/carecor-health-services/" target="_blank" rel="noopener">'+I.case+'<strong>LinkedIn</strong><span class="small muted">Carecor Health Services</span></a>'+
     '</div>'+
-    '<a class="pref-src" href="https://www.google.com/preferences/source?q=carecor.com" target="_blank" rel="noopener">'+I.star+'<span><strong>Add Carecor as a preferred source on Google</strong><span class="small muted">See our news first when you search on Google</span></span>'+I.right+'</a>'+
+    '<div class="pref-src"><a class="pref-badge" href="https://www.google.com/preferences/source?q=carecor.com" target="_blank" rel="noopener"><img src="media/brand/google-preferred-source.png" srcset="media/brand/google-preferred-source.png 1x, media/brand/google-preferred-source@2x.png 2x" width="169" height="53" alt="Add Carecor as a preferred source on Google"></a><p>See Carecor news first when you search on Google.</p></div>'+
     '</div></div></div></section>'+
 
   '<section class="sec" style="padding-top:0" aria-label="Get started"><div class="wrap closing">'+
