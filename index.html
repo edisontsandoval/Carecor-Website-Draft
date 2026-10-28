@@ -1,10 +1,23 @@
 <!doctype html>
 <html lang="en">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Draft 1 of the Carecor Health Services website redesign, for internal review.">
-<meta charset="utf-8">
-<title>Carecor Website Redesign</title>
+<meta name="description" content="Draft 1 of the new carecor.com for leadership review: find work, request staff, and see where Carecor works in Ontario and Atlantic Canada.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carecor Health Services">
+<meta property="og:title" content="Carecor website redesign, Draft 1">
+<meta property="og:description" content="Preview the new carecor.com: find work, request staff, and see where Carecor works in Ontario and Atlantic Canada.">
+<meta property="og:url" content="https://edisontsandoval.github.io/Carecor-Website-Draft/">
+<meta property="og:image" content="https://edisontsandoval.github.io/Carecor-Website-Draft/media/brand/share-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Carecor Health Services logo beside a smiling nurse, with the line: The right people, on the right unit, when it matters.">
+<meta name="twitter:card" content="summary_large_image">
+<title>Carecor Health Services | Website redesign, Draft 1</title>
+<link rel="icon" type="image/png" sizes="32x32" href="media/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="media/brand/favicon-48.png">
+<link rel="apple-touch-icon" href="media/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap">
@@ -1722,7 +1735,8 @@ function route(){
     if(r==='roles')renderRole();
     if(r==='hire-staff')renderClient();
     if(r==='news'){if(!S.newsKeep)S.newsSel=null;S.newsKeep=false;renderNews();}
-    document.title='Carecor Website Redesign';
+    var TT={home:'','find-work':'Find work',roles:'Roles we hire','where-we-work':'Where we work','hire-staff':'Hire staff',about:'About',news:'News and updates',verify:'Verify a recruiter'};
+    document.title=(TT[r]?TT[r]+' | ':'')+'Carecor Health Services';
     if(!S.A.picked){S.A.aud=PAGE_AUD[r];renderFab();}
   }
   if(S.auto){var a=S.auto;S.auto=null;a();}
