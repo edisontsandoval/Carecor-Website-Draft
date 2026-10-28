@@ -623,6 +623,7 @@ html:not(.presenter-on) .presenter{display:none!important}
 .bub{max-width:88%;padding:10px 13px;font-size:15px;line-height:1.5;border-radius:12px}
 .bub.bot{align-self:flex-start;background:var(--white);border:1px solid var(--line);border-bottom-left-radius:4px}
 .bub.me{align-self:flex-end;background:var(--navy);color:var(--white);border-bottom-right-radius:4px}
+.voice-note{align-self:stretch;margin:0;font-size:14px;line-height:1.45;color:var(--orange-ink);background:var(--orange-soft);border-radius:10px;padding:10px 12px}
 .bub-cta{align-self:flex-start;font-weight:600;font-size:14px;color:var(--navy);min-height:34px;display:inline-flex;align-items:center;gap:4px;margin-top:-4px}
 .p-body .chips .chip{min-height:34px;font-size:14px;padding:0 12px}
 .p-form{border-top:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;align-items:center}
@@ -1668,15 +1669,56 @@ function ask(q){
   A.msgs.push({me:true,text:q});A.draft='';A.thinking=true;renderFab(true);
   later(function(){A.thinking=false;A.msgs.push({me:false,text:r.a,cta:r.cta,href:r.href,q:r.q,scroll:r.scroll});renderFab(true);},700);
 }
+/* Voice: real speech-to-text where the browser supports it (Chrome, Edge, Safari), spoken answers, demo fallback elsewhere */
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null;
+function speakable(t){return String(t).replace(/within\s*\[[^\]]*\]/g,'soon').replace(/\s*\[[^\]]*\]/g,'').replace(/\s+([.,;])/g,'$1').replace(/\s{2,}/g,' ');}
+function speakOut(text,done0){
+  var fired=false,done=function(){if(!fired){fired=true;done0();}};
+  later(done,Math.max(4000,speakable(text).split(' ').length*450));
+  if(!('speechSynthesis' in window)){done();return;}
+  try{var u=new SpeechSynthesisUtterance(speakable(text));u.lang='en-CA';
+    var vs=speechSynthesis.getVoices(),v=vs.filter(function(x){return x.lang==='en-CA';})[0]||vs.filter(function(x){return /^en(-|_)/.test(x.lang);})[0];if(v)u.voice=v;
+    u.rate=1.02;u.onend=done;u.onerror=done;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(err){done();}
+}
+function voiceAnswer(q){
+  var t=q.toLowerCase();
+  if(S.A.aud==='client'&&/\b(need|send|book|cover|short|request)\b/.test(t)){
+    var n=parseNeed(q);
+    return {a:'Yes, I can start that request'+(n.role?' for '+(n.qty&&n.qty>1?n.qty+' ':'')+(n.qty>1?n.role.replace(/ \/ .*/,'')+'s':n.role):'')+'. I’ll pass it to your regional coordinator, who will confirm within [X hours]. Open the staffing assistant to check the details before you send it.',cta:'Open the staffing assistant',href:'#hire-staff',scroll:'sec-ai'};
+  }
+  return answer(q);
+}
+function stopVoice(){if(rec){try{rec.abort();}catch(e){}rec=null;}if(window.speechSynthesis)speechSynthesis.cancel();timers.forEach(clearTimeout);timers=[];}
 function mic(){
-  var A=S.A;if(A.voice!=='idle'){A.voice='idle';renderFab();return;}
-  var client=A.aud==='client';
+  var A=S.A;
+  if(A.voice==='listening'&&rec){try{rec.stop();}catch(e){}return;}
+  if(A.voice!=='idle'){stopVoice();A.voice='idle';renderFab();return;}
+  A.voiceCta=null;
+  if(!SR){A.voiceNote='This browser can’t turn speech into text, so you’re hearing a sample question. Voice works in Chrome, Edge and Safari.';return micDemo();}
+  var heard='';A.voiceNote='';A.captions=[];A.voice='listening';renderFab();
+  rec=new SR();rec.lang='en-CA';rec.interimResults=true;rec.continuous=false;rec.maxAlternatives=1;
+  rec.onresult=function(e){var t='';for(var i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;heard=t;A.captions=[{me:true,text:t}];renderFab();};
+  rec.onerror=function(e){rec=null;A.voice='idle';
+    A.voiceNote=(e.error==='not-allowed'||e.error==='service-not-allowed')?'Microphone access is blocked. Allow the microphone for this site using the icon in the address bar, then tap the microphone again. You can also switch to typing.':
+      e.error==='no-speech'?'I didn’t hear anything. Tap the microphone and try again.':
+      e.error==='audio-capture'?'No microphone was found. Check that one is connected, or switch to typing.':
+      e.error==='network'?'Voice needs an internet connection. Check your connection, or switch to typing.':
+      'Voice input stopped. Tap the microphone to try again, or switch to typing.';
+    renderFab();};
+  rec.onend=function(){rec=null;if(A.voice!=='listening')return;
+    if(!heard.trim()){A.voice='idle';A.voiceNote='I didn’t hear anything. Tap the microphone and try again.';renderFab();return;}
+    A.voice='thinking';renderFab();var r=voiceAnswer(heard);
+    later(function(){A.captions=[{me:true,text:heard},{me:false,text:r.a}];A.voiceCta=r.cta?r:null;A.voice='speaking';renderFab();
+      speakOut(r.a,function(){if(A.voice==='speaking'){A.voice='idle';renderFab();}});},600);};
+  try{rec.start();}catch(err){rec=null;A.voice='idle';A.voiceNote='Voice input couldn’t start here. Switch to typing, or open the site in Chrome, Edge or Safari.';renderFab();}
+}
+function micDemo(){
+  var A=S.A,client=A.aud==='client';
   var q=client?'Can you send two PSWs to our med-surg unit tomorrow night?':'Are there nursing jobs near Toronto?';
-  var r=client?'Yes, I can start that request. I’ll pass it to your regional coordinator, who will confirm within [X hours]. Would you like me to open the Request Staff form with these details?':answer(q).a;
+  var r=voiceAnswer(q);
   A.voice='listening';A.captions=[];renderFab();
   later(function(){A.captions=[{me:true,text:q}];A.voice='thinking';renderFab();},1800);
-  later(function(){A.captions=[{me:true,text:q},{me:false,text:r}];A.voice='speaking';renderFab();},2800);
-  later(function(){if(A.voice==='speaking'){A.voice='idle';renderFab();}},7500);
+  later(function(){A.captions=[{me:true,text:q},{me:false,text:r.a}];A.voiceCta=r.cta?r:null;A.voice='speaking';renderFab();speakOut(r.a,function(){if(A.voice==='speaking'){A.voice='idle';renderFab();}});},2800);
 }
 function fabTuck(){
   var f=$('#fab'),h=$('.hero-dock')||$('.hero');if(!f)return;
@@ -1706,8 +1748,10 @@ function renderFab(scrollEnd){
       var st={idle:'Tap to speak',listening:'Listening…',thinking:'Finding an answer…',speaking:'Ask Carecor is speaking'}[A.voice];
       h+='<div class="p-body voice"><p style="font-weight:600;color:var(--navy)">'+st+'</p><button type="button" class="mic'+(A.voice==='listening'?' on':'')+'" data-act="amic" aria-pressed="'+(A.voice==='listening')+'" aria-label="'+(A.voice==='listening'?'Stop listening':'Start speaking')+'">'+I.mic+'</button><div class="wave'+(A.voice==='speaking'?' speak':'')+'" aria-hidden="true">'+hs.map(function(x){return '<span style="height:'+x+'px"></span>';}).join('')+'</div>'+
         '<div style="align-self:stretch;display:grid;gap:8px"><span class="small" style="font-weight:600;color:var(--muted)">Live captions</span><div class="captions" aria-live="polite">'+(A.captions.length?A.captions.map(function(c){return '<span><strong style="color:'+(c.me?'var(--navy)':'var(--teal)')+'">'+(c.me?'You':'Ask Carecor')+':</strong> '+ph(c.text)+'</span>';}).join(''):'<span class="muted">Tap the microphone and ask your question out loud. Try: “'+(client?'I need two PSWs tomorrow night':'Are there nursing jobs near Toronto?')+'”</span>')+'</div></div>'+
+        (A.voiceNote?'<p class="voice-note" role="status">'+esc(A.voiceNote)+'</p>':'')+
+        (A.voiceCta&&A.voice!=='listening'?'<a class="bub-cta" style="align-self:flex-start;margin-top:0" href="'+A.voiceCta.href+'" data-act="aclose-nav"'+(A.voiceCta.q?' data-q="'+esc(A.voiceCta.q)+'"':'')+(A.voiceCta.scroll?' data-scroll="'+A.voiceCta.scroll+'"':'')+'>'+esc(A.voiceCta.cta)+' →</a>':'')+
         '<div class="btn-row" style="align-self:stretch"><button type="button" class="btn btn-line btn-sm" style="flex:1" data-act="achat">Switch to typing</button><button type="button" class="btn btn-navy btn-sm" style="flex:1" data-act="demo" data-msg="'+(client?'24/7 staffing line: [phone to confirm]':'Call a recruiter at 1-888-426-7425')+'">'+(client?'Call 24/7 staffing line':'Call a recruiter')+'</button></div>'+
-        '<p class="note" style="text-align:center">Voice is processed to answer your question and isn’t stored as a recording. '+ph('[Confirm retention policy]')+'</p></div>';
+        '<p class="note" style="text-align:center">Your browser’s speech service turns what you say into text. Carecor doesn’t keep a recording. '+ph('[Confirm retention policy]')+'</p></div>';
     }
     if(A.aud){h+='<div class="p-foot"><span>AI answers can be incomplete.</span><div><button type="button" data-act="aswitch">'+(client?'I’m a job seeker':'I need staff')+'</button><a href="'+(client?'#hire-staff':'#find-work')+'" data-act="aclose-nav">'+(client?'Talk to a coordinator':'Talk to a recruiter')+'</a></div></div>';}
     h+='</section>';
@@ -1811,13 +1855,14 @@ var ACT={
   ccopy:function(){var t=$('#c-body').textContent;var ok=function(){toast('Request copied. Paste it into an email to info@carecor.com.');};var fail=function(){var d=$('#c-body').closest('details');if(d)d.open=true;var r=document.createRange();r.selectNodeContents($('#c-body'));var sel=getSelection();sel.removeAllRanges();sel.addRange(r);toast('Text selected. Press Ctrl+C or Cmd+C to copy it.');};try{navigator.clipboard.writeText(t).then(ok,fail);}catch(e){fail();}},
   cback:function(){S.C.step=Math.max(1,S.C.step-1);renderClient();},
   /* assistant */
-  atoggle:function(){S.A.open=!S.A.open;renderFab(true);if(S.A.open){var i=$('#p-input');if(i)i.focus();}},
+  atoggle:function(){S.A.open=!S.A.open;if(!S.A.open){stopVoice();S.A.voice='idle';}renderFab(true);if(S.A.open){var i=$('#p-input');if(i)i.focus();}},
   aopenvoice:function(){S.A.open=true;S.A.mode='voice';if(!S.A.aud){/* audience chooser first */}renderFab();},
   areset:function(){Object.assign(S.A,{msgs:[],captions:[],voice:'idle',draft:''});timers.forEach(clearTimeout);timers=[];renderFab();},
   apick:function(t){S.A.aud=t.dataset.v;S.A.picked=true;renderFab();},
   aswitch:function(){S.A.aud=S.A.aud==='client'?'seeker':'client';S.A.picked=true;Object.assign(S.A,{msgs:[],captions:[],voice:'idle'});renderFab();},
-  achat:function(){S.A.mode='chat';S.A.voice='idle';renderFab(true);},
+  achat:function(){stopVoice();S.A.mode='chat';S.A.voice='idle';renderFab(true);},
   avoice:function(){S.A.mode='voice';renderFab();},
+  avoicestop:function(){stopVoice();S.A.voice='idle';renderFab();},
   aask:function(t){ask(t.dataset.q);},
   amic:function(){mic();},
   'aclose-nav':function(t,e){S.A.open=false;renderFab();if(t.dataset.q){e.preventDefault();var q=t.dataset.q;S.J.q=q;go('find-work',null,function(){var f=$('#fw-q');if(f)f.value=q;runMatch(q);});return 'handled';}}
