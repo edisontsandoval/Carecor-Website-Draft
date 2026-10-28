@@ -316,6 +316,41 @@ body.show-cz .cz::after{content:"Clear zone: height of the \201Co\201D on every 
 .cities figcaption{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.92);color:var(--navy);font-size:13px;font-weight:600;padding:3px 9px;border-radius:999px}
 .role-photo{margin:0;aspect-ratio:16/10;overflow:hidden;border-radius:10px}
 .role-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.about-tabs{border-bottom:1px solid var(--line);background:var(--white)}
+.at-in{display:flex;gap:28px;overflow-x:auto}
+.about-tabs a{position:relative;display:inline-flex;align-items:center;min-height:52px;color:var(--muted);font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap}
+.about-tabs a:hover{color:var(--navy)}
+.about-tabs a[aria-current="page"]{color:var(--navy)}
+.about-tabs a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--orange);border-radius:3px 3px 0 0}
+.n-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.n-card{min-width:0}
+.n-link{display:grid;gap:16px;text-decoration:none;color:inherit;height:100%;align-content:start}
+.n-img{margin:0;aspect-ratio:3/2;overflow:hidden;border-radius:10px;background:var(--mist)}
+.n-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.n-body{display:grid;gap:10px;align-content:start}
+.n-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;color:var(--muted);margin:0}
+.n-body h3{color:var(--navy);margin:0}
+.n-ex{margin:0;color:var(--text)}
+.n-more{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--navy);text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:2px;text-underline-offset:5px}
+.n-more svg{width:16px;height:16px;transition:transform .3s}
+.n-feature .n-link{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center}
+.n-feature .n-img{aspect-ratio:16/10}
+.n-feature .n-body{gap:14px}
+@media (hover:hover) and (pointer:fine){.n-link:hover .n-img img{transform:scale(1.04)}.n-link:hover .n-more svg{transform:translateX(3px)}.n-link:hover h3{color:var(--orange-ink)}}
+.na-wrap{max-width:52rem;display:grid;gap:18px}
+.news-hero::before{display:none}
+.news-hero .ph-in{padding-block:clamp(32px,4vw,56px)}
+.sec-head > .link{white-space:nowrap}
+.na-back{justify-self:start}
+.na-back svg{width:16px;height:16px}
+.n-article .h-xl{font-size:clamp(34px,4.4vw,52px)}
+.na-img{margin:8px 0 4px;display:grid;gap:8px}
+.na-img img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block}
+.na-img figcaption{font-size:13px;color:var(--muted)}
+.na-body{display:grid;gap:16px;font-size:18px;line-height:1.65}
+.na-body p{margin:0;max-width:none}
+@media (max-width:900px){.n-grid{grid-template-columns:minmax(0,1fr)}.n-feature .n-link{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:601px) and (max-width:900px){.n-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .region-detail .actions{display:flex;flex-wrap:wrap;gap:8px 20px}
 
 /* mosaic */
@@ -761,7 +796,7 @@ html:not(.presenter-on) .presenter{display:none!important}
     <div class="foot-cols">
       <div><strong>Job seekers</strong><a href="#find-work">Find work</a><a href="#roles">Roles we hire</a><a href="#where-we-work">Where we work</a><a href="#find-work" data-scroll="sec-pool">Join our talent pool</a></div>
       <div><strong>Healthcare facilities</strong><a href="#hire-staff" data-scroll="sec-request">Request staff</a><a href="#hire-staff" data-scroll="sec-how">How we work</a><a href="#roles">Roles we staff</a></div>
-      <div><strong>Carecor</strong><a href="#about">About us</a><a href="#verify">Verify a recruiter</a><a href="#" data-act="demo" data-msg="The news page is not part of this draft.">News</a></div>
+      <div><strong>Carecor</strong><a href="#about">About us</a><a href="#verify">Verify a recruiter</a><a href="#news">News and updates</a></div>
       <div><strong>Accreditation</strong><span>Accreditation Canada, Accredited with Exemplary Standing</span></div>
     </div>
     <div class="foot-bottom">
@@ -993,7 +1028,7 @@ function countUp(el,delay){
     if(k<1)requestAnimationFrame(step);else{num.textContent=fmtNum(to)+suf;}
   });},delay||0);
 }
-var RV_SEL='.cities,.why-row,.bay-logo,.sec-head,.trust > div,.card,.job-row,.region-btn,.region-detail,.mosaic figure,.life > figure,.social,.closing > div,.frame,.ai-panel,.filters,.role-grid button,.trio > div,.values span,.vw > section,.checker,.req-form,.faq figure,details,.contact-band,.page-hero .lede,.ph-actions';
+var RV_SEL='.n-card,.cities,.why-row,.bay-logo,.sec-head,.trust > div,.card,.job-row,.region-btn,.region-detail,.mosaic figure,.life > figure,.social,.closing > div,.frame,.ai-panel,.filters,.role-grid button,.trio > div,.values span,.vw > section,.checker,.req-form,.faq figure,details,.contact-band,.page-hero .lede,.ph-actions';
 var revealIO=null;
 function setupMotion(){
   if(!CAN_ANIM)return;
@@ -1030,9 +1065,10 @@ if(!REDUCED&&matchMedia('(hover:hover) and (pointer:fine)').matches){
 /* ---------- navigation ---------- */
 var NAV=[['home','Home'],['find-work','Find work'],['roles','Roles'],['where-we-work','Where we work'],['hire-staff','Hire staff'],['about','About']];
 function renderNav(){
-  var h=NAV.map(function(n){return '<a href="#'+n[0]+'"'+(S.route===n[0]?' aria-current="page"':'')+'>'+n[1]+'</a>';}).join('');
+  var cur=S.route==='news'?'about':S.route;
+  var h=NAV.map(function(n){return '<a href="#'+n[0]+'"'+(cur===n[0]?' aria-current="page"':'')+'>'+n[1]+'</a>';}).join('');
   $('#nav-primary').innerHTML=h;
-  $('#nav-mobile').innerHTML=NAV.map(function(n){return '<a href="#'+n[0]+'"'+(S.route===n[0]?' aria-current="page"':'')+'>'+n[1]+I.right.replace('<svg','<svg width="18" height="18"')+'</a>';}).join('');
+  $('#nav-mobile').innerHTML=NAV.map(function(n){return '<a href="#'+n[0]+'"'+(cur===n[0]?' aria-current="page"':'')+'>'+n[1]+I.right.replace('<svg','<svg width="18" height="18"')+'</a>';}).join('');
   $$('.util nav a').forEach(function(a){a.setAttribute('aria-current', String((a.dataset.aud==='client')===(S.route==='hire-staff')));});
 }
 
@@ -1437,8 +1473,92 @@ function acceptAI(){
 }
 
 /* ---------- ABOUT ---------- */
+
+/* ---------- NEWS (About > News and updates) ---------- */
+var NEWS=[
+  {id:'career-fair-halifax',cat:'Events',date:'2026-10-22',img:'news-1.jpg',pos:'50% 40%',alt:'Two recruiters at a career fair booth talking with nursing students',
+   title:'Meeting nursing students at a Halifax career fair',
+   ex:'Our Atlantic Canada recruiters spent a day answering questions from nursing and practical nursing students about casual hospital work.',
+   body:['Our Halifax recruitment team set up a booth at a college career fair this month. We met nursing and practical nursing students who finish their programs this year, along with a few new graduates already writing their licensing exams.',
+     'Most questions were practical. Students wanted to know how casual shifts work, whether they could keep a part-time job while picking up hospital shifts, and what orientation looks like before a first assignment.',
+     'Several students asked about travel nursing for people who live outside Nova Scotia. Those roles are open now on our job board, along with casual RN and LPN positions in Halifax Regional Municipality hospitals.',
+     'If we missed you at the booth, you can still join our talent pool. A recruiter will contact you when a role that fits your licence and schedule opens.'],
+   cta:['Join the talent pool','#find-work','sec-pool']},
+  {id:'ltc-partner-eastern-ontario',cat:'Partnerships',date:'2026-10-15',img:'news-2.jpg',pos:'50% 35%',alt:'A nurse manager and a staffing coordinator shaking hands in a long-term care home lobby',
+   title:'A new long-term care partner in Eastern Ontario',
+   ex:'We now staff PSWs and RPNs at a long-term care home in Eastern Ontario, with shifts open to staff in the Ottawa area.',
+   body:['Carecor has started a staffing partnership with a long-term care home in Eastern Ontario [partner name to confirm]. Our team will supply personal support workers and registered practical nurses to cover vacations, leaves and short-notice gaps.',
+     'Before the first shifts, our Healthcare Staff Supervisors toured the home, met the director of care and went over the home’s routines. Our staff arrive knowing the floor plan, the charting system and who to ask for help.',
+     'Staff who live in Ottawa, Russell or the Dundas and Glengarry area can add this home to their preferred locations in the scheduling portal.'],
+   cta:['Search open roles','#find-work','']},
+  {id:'toronto-food-drive',cat:'Community',date:'2026-10-08',img:'news-3.jpg',pos:'50% 45%',alt:'Office staff packing canned food into donation boxes on a boardroom table',
+   title:'Our Toronto office runs a fall food drive',
+   ex:'Office and field staff filled [X] boxes for a North York food bank over two weeks.',
+   body:['For two weeks in October, our Toronto office in North York collected non-perishable food for a local food bank [name to confirm].',
+     'Field staff dropped off donations between shifts, and the office team sorted everything at a lunch-hour packing session. By the end we had filled [X] boxes.',
+     'Thank you to everyone who brought something in. We plan to run the drive again in the spring.'],
+   cta:null},
+  {id:'spot-a-recruitment-scam',cat:'Advice',date:'2026-10-01',img:'news-4.jpg',pos:'45% 40%',alt:'A healthcare worker in scrubs looking carefully at a message on her phone',
+   title:'How to tell if a recruitment message is really from Carecor',
+   ex:'People posing as recruiters are contacting healthcare workers by text and email. Here is what to watch for and how to check.',
+   body:['Healthcare workers across Canada are getting job offers from people pretending to be recruiters. Some use the names of real staffing companies, including ours.',
+     'A real Carecor recruiter will never ask you to pay for training, uniforms or equipment. We won’t send you a cheque, and we won’t ask for your banking details or SIN before you are hired. We also never offer a job by text without an interview.',
+     'Our recruiters email from an @carecor.com address, and they are happy for you to call our office to check who they are.',
+     'If a message feels off, stop replying and check it on our Verify a recruiter page, or call us at 1-888-426-7425.'],
+   cta:['Verify a recruiter','#verify','']},
+  {id:'first-shift',cat:'Careers',date:'2026-09-24',img:'news-5.jpg',pos:'50% 30%',alt:'A charge nurse welcoming a new nurse on a hospital unit',
+   title:'What to expect on your first Carecor shift',
+   ex:'From orientation to your first handover, here is how a first assignment works.',
+   body:['Before your first shift you complete Carecor orientation, and your recruiter confirms your licence, references and checks. Once you are active, you set your availability and pick shifts in the scheduling portal.',
+     'On the day, arrive a little early and check in with the charge nurse. They will assign your patients and show you where supplies, charts and emergency equipment are kept.',
+     'If you are new to the unit, one of our Healthcare Staff Supervisors can meet you on site. They work with charge nurses and clinical educators and can help with equipment questions or a change in assignment.',
+     'After the shift, tell your coordinator how it went. Your feedback helps us place you on units that suit your experience.'],
+   cta:['Search open roles','#find-work','']},
+  {id:'healthcare-staff-supervisors',cat:'Our team',date:'2026-09-17',img:'news-6.jpg',pos:'50% 30%',alt:'A nurse supervisor with a tablet talking with two healthcare workers at a nursing station',
+   title:'What our Healthcare Staff Supervisors do',
+   ex:'Our supervisors are Carecor nurses who support our staff on site. Here is what their work looks like.',
+   body:['Healthcare Staff Supervisors are Carecor nurses who work on site at partner hospitals. They are the link between facility charge nurses, clinical educators and the staff we place.',
+     'A typical day starts with a check of which Carecor staff are on shift and where. Supervisors visit units, answer questions about new equipment or processes, and step in when an assignment changes.',
+     'They also collect feedback. When a hospital sends a compliment about one of our people, it usually reaches us through a supervisor, and we pass it on to the staff member.',
+     '[Add a short profile of one supervisor, with their permission.]'],
+   cta:['How we work with facilities','#hire-staff','sec-how']}
+];
+var NEWS_CATS=['All'].concat(NEWS.map(function(n){return n.cat;}).filter(function(c,i,a){return a.indexOf(c)===i;}));
+function newsDate(d){return new Date(d+'T12:00:00').toLocaleDateString('en-CA',{month:'long',day:'numeric',year:'numeric'});}
+function newsMins(n){var w=n.body.join(' ').split(/\s+/).length;return Math.max(1,Math.round(w/200))+' min read';}
+function newsCard(n,big){
+  return '<article class="n-card'+(big?' n-feature':'')+'"><a href="#news" data-act="npost" data-id="'+n.id+'" class="n-link"><figure class="n-img"><img src="media/news/'+n.img+'" alt="'+esc(n.alt)+'" loading="lazy" style="object-position:'+n.pos+'"></figure>'+
+    '<div class="n-body"><p class="n-meta"><span class="pill teal">'+esc(n.cat)+'</span><span>'+newsDate(n.date)+'</span></p><h3 class="'+(big?'h-lg':'h-sm')+'">'+esc(n.title)+'</h3><p class="n-ex">'+ph(n.ex)+'</p><span class="n-more">Read more'+I.right+'</span></div></a></article>';
+}
+function aboutTabs(cur){
+  return '<nav class="about-tabs" aria-label="About Carecor"><div class="wrap"><div class="at-in">'+[['about','Our story'],['news','News and updates']].map(function(t){return '<a href="#'+t[0]+'"'+(cur===t[0]?' aria-current="page"':'')+'>'+t[1]+'</a>';}).join('')+'</div></div></nav>';
+}
+PAGES.news=function(){return aboutTabs('news')+'<div id="news-root"></div>';};
+function renderNews(){
+  var root=$('#news-root');if(!root)return;
+  var sel=S.newsSel&&NEWS.filter(function(n){return n.id===S.newsSel;})[0];
+  if(sel){
+    var others=NEWS.filter(function(n){return n.id!==sel.id;}).slice(0,3);
+    root.innerHTML='<article class="sec tight n-article" aria-labelledby="na-h"><div class="wrap na-wrap">'+
+      '<a href="#news" class="link na-back" data-act="nback">'+I.left+'All news</a>'+
+      '<p class="n-meta"><span class="pill teal">'+esc(sel.cat)+'</span><span>'+newsDate(sel.date)+'</span><span>'+newsMins(sel)+'</span><span class="pill orange">Sample post</span></p>'+
+      '<h1 id="na-h" class="h-xl" tabindex="-1">'+esc(sel.title)+'</h1><p class="lede">'+ph(sel.ex)+'</p>'+
+      '<figure class="na-img"><img src="media/news/'+sel.img+'" alt="'+esc(sel.alt)+'" style="object-position:'+sel.pos+'"><figcaption>Placeholder image created with AI for this draft.</figcaption></figure>'+
+      '<div class="na-body">'+sel.body.map(function(p){return '<p>'+ph(p)+'</p>';}).join('')+
+      (sel.cta?'<p><a class="btn btn-orange" href="'+sel.cta[1]+'"'+(sel.cta[2]?' data-scroll="'+sel.cta[2]+'"':'')+'>'+esc(sel.cta[0])+'</a></p>':'')+'</div>'+
+      '</div></article>'+
+      '<section class="sec band-mist" aria-labelledby="nm-h"><div class="wrap"><div class="sec-head"><div><h2 id="nm-h" class="h-lg">More <strong>news</strong></h2></div><a class="link" href="#news" data-act="nback">All news'+I.right+'</a></div><div class="n-grid">'+others.map(function(n){return newsCard(n,false);}).join('')+'</div></div></section>';
+    return;
+  }
+  var cat=S.newsCat||'All',list=NEWS.filter(function(n){return cat==='All'||n.cat===cat;});
+  root.innerHTML='<section class="page-hero news-hero" aria-labelledby="news-h"><div class="wrap ph-in" style="grid-template-columns:minmax(0,1fr)"><div style="max-width:48rem"><p class="eyebrow">About Carecor</p><h1 id="news-h" class="h-xl" tabindex="-1">News and <strong>updates</strong></h1><p class="lede">Events, partnerships and stories from Carecor teams in Ontario and Atlantic Canada.</p><p class="note">'+ph('[Sample posts and AI-generated images for this draft. Replace with real stories before launch.]')+'</p></div></div></section>'+
+    '<section class="sec tight" aria-label="News posts"><div class="wrap" style="display:grid;gap:28px">'+
+      '<div class="chips" role="group" aria-label="Filter by topic">'+NEWS_CATS.map(function(c){return '<button type="button" class="chip" data-act="ncat" data-v="'+esc(c)+'" aria-pressed="'+(c===cat)+'">'+esc(c)+'</button>';}).join('')+'</div>'+
+      (list.length?newsCard(list[0],true)+(list.length>1?'<div class="n-grid">'+list.slice(1).map(function(n){return newsCard(n,false);}).join('')+'</div>':''):'<p class="muted">No posts in this topic yet.</p>')+
+    '</div></section>';
+}
 PAGES.about=function(){
-  return '<section class="page-hero" aria-labelledby="about-h"><div class="wrap ph-in"><div><p class="eyebrow">About Carecor · Since 1982</p><h1 id="about-h" class="h-xl" tabindex="-1">Over 40 years of <strong>excellence in health services.</strong></h1><p class="lede">For more than 40 years, Carecor has provided acute healthcare facilities with patient-facing staff. As staffing needs evolved, so did we, growing through partnerships and new services to become a leading healthcare staffing agency. From Unit Clerk to Registered Nurse, you’ll find Carecor people in roles throughout healthcare facilities.</p><p class="muted">Carecor Health Services is a division of Bayshore HealthCare.</p></div>'+frame(IMG.group,'A smiling Carecor nurse with colleagues','','50% 25%')+'</div></section>'+
+  return aboutTabs('about')+'<section class="page-hero" aria-labelledby="about-h"><div class="wrap ph-in"><div><p class="eyebrow">About Carecor · Since 1982</p><h1 id="about-h" class="h-xl" tabindex="-1">Over 40 years of <strong>excellence in health services.</strong></h1><p class="lede">For more than 40 years, Carecor has provided acute healthcare facilities with patient-facing staff. As staffing needs evolved, so did we, growing through partnerships and new services to become a leading healthcare staffing agency. From Unit Clerk to Registered Nurse, you’ll find Carecor people in roles throughout healthcare facilities.</p><p class="muted">Carecor Health Services is a division of Bayshore HealthCare.</p></div>'+frame(IMG.group,'A smiling Carecor nurse with colleagues','','50% 25%')+'</div></section>'+
   '<section class="sec" aria-labelledby="dir-h"><div class="wrap"><div class="sec-head"><div><h2 id="dir-h" class="h-lg">Our strategic <strong>direction</strong></h2></div></div><div class="trio">'+
     '<div><h3 class="h-md">Philosophy</h3><p>It’s all about our people. We provide rewarding placements for our employees and superior health care solutions for our clients.</p></div>'+
     '<div><h3 class="h-md">Vision</h3><p>To create an exceptional experience and impact lives, so our people feel empowered to inspire others. Our brand is built on our people and the people they connect with.</p></div>'+
@@ -1587,8 +1707,8 @@ function renderFab(scrollEnd){
 /* =====================================================================
    ROUTER + EVENTS
    ===================================================================== */
-var ROUTES=['home','find-work','roles','where-we-work','hire-staff','about','verify'];
-var PAGE_AUD={home:'','find-work':'seeker',roles:'seeker',verify:'seeker','hire-staff':'client','where-we-work':'',about:''};
+var ROUTES=['home','find-work','roles','where-we-work','hire-staff','about','news','verify'];
+var PAGE_AUD={home:'','find-work':'seeker',roles:'seeker',verify:'seeker','hire-staff':'client','where-we-work':'',about:'',news:''};
 function scrollToId(id){var el=document.getElementById(id);if(!el)return;var bar=$('#bar').offsetHeight;var y=el.getBoundingClientRect().top+window.pageYOffset-bar-8;window.scrollTo({top:Math.max(0,y),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
 if(/[?&]presenter/.test(location.search))document.documentElement.classList.add('presenter-on');
 function route(){
@@ -1601,6 +1721,7 @@ function route(){
     if(r==='find-work'){renderJobs();}
     if(r==='roles')renderRole();
     if(r==='hire-staff')renderClient();
+    if(r==='news'){if(!S.newsKeep)S.newsSel=null;S.newsKeep=false;renderNews();}
     document.title='Carecor Website Redesign';
     if(!S.A.picked){S.A.aud=PAGE_AUD[r];renderFab();}
   }
@@ -1652,6 +1773,9 @@ var ACT={
   frole:function(t){S.J.role=t.dataset.v;renderJobs();},
   fregion:function(t){S.J.region=t.dataset.v;S.J.near=null;renderJobs();},
   fshift:function(t){S.J.shift=t.dataset.v;renderJobs();},
+  npost:function(t){S.newsSel=t.dataset.id;if(S.route!=='news'){S.newsKeep=true;location.hash='news';}else{renderNews();window.scrollTo(0,0);var h=$('#na-h');if(h)h.focus({preventScroll:true});setTimeout(setupMotion,40);}return 'handled';},
+  nback:function(){S.newsSel=null;if(S.route!=='news'){location.hash='news';}else{renderNews();window.scrollTo(0,0);var h=$('#news-h');if(h)h.focus({preventScroll:true});setTimeout(setupMotion,40);}return 'handled';},
+  ncat:function(t){S.newsCat=t.dataset.v;renderNews();},
   dnclose:function(){var d=$('#draft-note');if(d)d.hidden=true;},
   fwmore:function(){S.J.show=(S.J.show||10)+10;renderJobs();},
   fwpick:function(t){S.J.sel=Number(t.dataset.id);S.J.step=1;renderJobs();if(matchMedia('(max-width:900px)').matches)scrollToId('fw-detail');},
