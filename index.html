@@ -340,6 +340,62 @@ body.show-cz .cz::after{content:"Clear zone: height of the \201Co\201D on every 
 .about-tabs a[aria-current="page"]{color:var(--navy)}
 .about-tabs a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--orange);border-radius:3px 3px 0 0}
 .n-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.lg-layout{display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.lg-toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 112px);display:grid;gap:14px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--white)}
+.lg-toc-h{margin:0;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.lg-toc ol{margin:0;padding:0;list-style:none;display:grid;gap:2px;counter-reset:t}
+.lg-toc li{counter-increment:t}
+.lg-toc a{display:flex;gap:10px;padding:8px 10px;border-radius:8px;color:var(--navy);text-decoration:none;font-size:14.5px;line-height:1.35;font-weight:500}
+.lg-toc a::before{content:counter(t,decimal-leading-zero);color:var(--orange-ink);font-weight:700;font-size:12px;padding-top:2px}
+.lg-toc a:hover,.lg-toc a[aria-current="true"]{background:var(--mist)}
+.lg-toc a[aria-current="true"]{box-shadow:inset 3px 0 0 var(--orange)}
+.lg-body{display:grid;gap:14px;min-width:0;max-width:46rem}
+.lg-body p{margin:0;max-width:none;font-size:17px;line-height:1.7}
+.lg-body h3{margin:12px 0 0;color:var(--navy)}
+.lg-sec{display:grid;gap:14px;padding-bottom:34px;margin-bottom:22px;border-bottom:1px solid var(--line);scroll-margin-top:120px}
+.lg-sec:last-child{border-bottom:0}
+.lg-sec h2{color:var(--navy)}
+.lg-img{margin:6px 0;aspect-ratio:16/8;overflow:hidden;border-radius:12px}
+.lg-img img{width:100%;height:100%;object-fit:cover;display:block}
+.lg-contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:20px;border-radius:14px;background:var(--navy);color:#fff;margin-top:6px}
+.lg-contact > div:first-child{grid-column:1/-1;display:grid;gap:2px}
+.lg-contact strong{font-size:18px}
+.lg-contact > div:first-child span{color:#C9CEE6}
+.lg-contact a,.lg-addr,.acc-ways > *{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:10px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;line-height:1.45;font-size:15px}
+.lg-contact a:hover{background:rgba(255,255,255,.16)}
+.lg-contact svg,.acc-ways svg{width:20px;height:20px;flex:none;margin-top:2px;color:#F7A06A}
+.lg-contact small,.acc-ways small{display:block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#C9CEE6}
+.lg-addr{grid-column:1/-1}
+.lr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.lr-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);border-radius:14px;overflow:hidden;background:var(--white);border:1px solid var(--line);text-decoration:none;color:inherit;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.lr-card figure{margin:0;min-height:170px}
+.lr-card img{width:100%;height:100%;object-fit:cover;display:block}
+.lr-card > span{display:grid;gap:8px;padding:22px;align-content:center}
+.lr-card strong{color:var(--navy);font-size:19px}
+@media (hover:hover) and (pointer:fine){.lr-card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(27,36,82,.5)}}
+.lg-narrow{max-width:60rem;display:grid;gap:22px}
+.ck-grid{list-style:none;margin:8px 0 18px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ck-card{display:grid;gap:10px;align-content:start;padding:24px;border-radius:14px;background:var(--mist);position:relative}
+.ck-card p{margin:0;font-size:15.5px}
+.ck-ico{width:46px;height:46px;border-radius:12px;background:var(--white);display:grid;place-items:center;color:var(--teal)}
+.ck-ico svg{width:22px;height:22px}
+.ck-card .step-n{position:absolute;top:22px;right:22px;font-weight:700;color:var(--orange-ink)}
+.ck-text{max-width:none}
+.acc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.acc-card{margin:0;display:grid;gap:14px}
+.acc-img{aspect-ratio:4/3;overflow:hidden;border-radius:12px}
+.acc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover) and (pointer:fine){.acc-card:hover img{transform:scale(1.04)}}
+.acc-card h3{margin:0;color:var(--navy)}
+.acc-callout{display:flex;gap:16px;align-items:flex-start;margin-top:28px;padding:22px 24px;border-radius:14px;background:var(--teal-soft);color:var(--navy);font-size:17px;line-height:1.6}
+.acc-callout svg{width:26px;height:26px;color:var(--teal);flex:none;margin-top:2px}
+.acc-callout p{margin:0;max-width:none}
+.acc-fb{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.acc-fb > div:first-child{display:grid;gap:14px}
+.acc-ways{display:grid;gap:12px;padding:20px;border-radius:14px;background:var(--navy)}
+.acc-ways a:hover{background:rgba(255,255,255,.16)}
+@media (max-width:900px){.lg-layout,.acc-fb,.lr-card{grid-template-columns:minmax(0,1fr)}.lg-toc{position:static}.ck-grid,.acc-grid,.lr-grid{grid-template-columns:minmax(0,1fr)}.lg-contact{grid-template-columns:minmax(0,1fr)}.lr-card figure{min-height:180px}}
+@media (min-width:601px) and (max-width:900px){.acc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .n-card{min-width:0}
 .n-link{display:grid;gap:16px;text-decoration:none;color:inherit;height:100%;align-content:start}
 .n-img{margin:0;aspect-ratio:3/2;overflow:hidden;border-radius:10px;background:var(--mist)}
@@ -820,9 +876,9 @@ html:not(.presenter-on) .presenter{display:none!important}
     <div class="foot-bottom">
       <span><span>&copy; 2026 Carecor Health Services Ltd</span><a href="#" data-act="top">Back to top</a></span>
       <div>
-        <a href="#" data-act="demo" data-msg="Policy pages are not part of this draft.">Privacy policy</a>
-        <a href="#" data-act="demo" data-msg="Policy pages are not part of this draft.">Cookie policy</a>
-        <a href="#" data-act="demo" data-msg="Policy pages are not part of this draft.">Accessibility (WCAG 2.2 AA)</a>
+        <a href="#privacy">Privacy policy</a>
+        <a href="#cookies">Cookie policy</a>
+        <a href="#accessibility">Accessibility</a>
       </div>
       <div class="presenter" role="group" aria-label="Presenter tools"><span>Presenter tools</span>
         <button type="button" class="cz-toggle" data-act="cz" aria-pressed="false">Show logo clear zone</button>
@@ -849,6 +905,10 @@ function heroVideoSrc(){return HERO_VIDEO?(matchMedia('(max-width:900px)').match
 
 /* ---------- icons ---------- */
 var I = {
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
   star:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>',
   pin:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>',
   spark:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg>',
@@ -1086,7 +1146,7 @@ if(!REDUCED&&matchMedia('(hover:hover) and (pointer:fine)').matches){
    or follow a colon. Words that already contain a capital, a digit or a symbol (RN, PSWs, #TeamCarecor,
    @carecor.com, 1:1) are left exactly as written. */
 var TC_SMALL=/^(a|an|the|and|but|or|nor|for|so|yet|as|at|by|in|of|off|on|per|to|up|via|vs)$/;
-var TC_SEL='h1,h2,h3,h4,.trust strong,.foot-cols > div > strong,.role-card strong,.region-detail > div > strong,.p-title strong';
+var TC_SEL='h1,h2,h3,h4,.trust strong,.lg-toc li a,.foot-cols > div > strong,.role-card strong,.region-detail > div > strong,.p-title strong';
 function tcWord(w,force){
   return w.split(/([-‑])/).map(function(part,i){
     if(!/^[a-z][a-z’']*$/.test(part))return part;
@@ -1097,7 +1157,7 @@ function tcWord(w,force){
 }
 function titleCase(el){
   if(el.dataset.tc===el.textContent)return;
-  if(!/^H[1-4]$/.test(el.tagName)&&/[.!?]\s*$/.test(el.textContent))return;
+  if(el.matches('.region-detail > div > strong,.role-card strong')&&/[.!?]\s*$/.test(el.textContent))return;
   var nodes=[],w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),n;
   while((n=w.nextNode()))nodes.push(n);
   var full=nodes.map(function(t){return t.nodeValue;}).join('');
@@ -1612,6 +1672,55 @@ function renderNews(){
       (list.length?newsCard(list[0],true)+(list.length>1?'<div class="n-grid">'+list.slice(1).map(function(n){return newsCard(n,false);}).join('')+'</div>':''):'<p class="muted">No posts in this topic yet.</p>')+
     '</div></section>';
 }
+
+/* ---------- LEGAL PAGES (text from carecor.com) ---------- */
+var LEGAL={"privacy": {"effective": "Effective Date: February 2026", "sections": [{"h": "Our Privacy Commitment to You", "blocks": [{"p": ["We at Bayshore Healthcare are committed to protecting your information by following all applicable Federal and Provincial privacy laws. This includes being accountable for how personal information is handled, which includes clearly identifying the purpose for its collection, obtaining meaningful consent, and limiting collection, use and retention. We ensure data accuracy, implement robust safeguards and maintain transparency about our practices. Individuals have the right to access and correct their information, and to ask questions. These principles guide our approach to responsible personal information oversight and privacy protection. This Privacy Notice applies to all individuals whose personal information we collect and/or use including clients/patients, employees and prospective applicants and website visitors and users."]}]}, {"h": "Important Information about Collection, Use and Disclosure of your Personal Information", "img": ["legal-records.jpg", "A privacy officer reviewing folders at a tidy office desk"], "blocks": [{"h3": "What Information Do We Collect?", "p": ["To deliver safe, effective, and personalized healthcare services, we collect personal information directly from you based on your consent. This includes basic contact details (such as your name, phone number, and email address), health and medical information (including diagnoses, treatment history, and prescriptions)."]}, {"h3": "How We Use Your Information", "p": ["We use your personal information to provide and coordinate healthcare services, communicate with you about your care, and manage administrative and operational functions. This includes scheduling appointments, maintaining medical records, processing billing and insurance claims, and ensuring quality and safety in service delivery. Where applicable, your data may be used for research, analytics and quality improvement, but only in ways that do not identify you personally and is handled in accordance with applicable privacy standards."]}, {"h3": "Disclosure or Sharing of Information", "p": ["Based on your consent, we may share your personal information with authorized individuals or organizations when necessary to provide healthcare services, support operational needs, or comply with legal obligations. This includes sharing with healthcare professionals involved in your care, insurance providers, regulatory bodies, and service providers who support our systems and operations (such as IT or billing services)."]}, {"h3": "Cookies and Website Technologies", "p": ["Some of our websites may use cookies and similar technologies to enhance functionality, support analytics, and improve your browsing experience. These technologies may collect information such as your browser type, device details, and IP address, but do not identify you personally. When you visit our sites, a cookie banner may appear, allowing you to manage your preferences in accordance with consent requirements. We are currently in the process of implementing cookie banners across all our websites.", "In some cases, cookies may be used to support secure handling of personal health information (PHI) and personal information (PI). All internet technologies used by Bayshore are governed by robust security and privacy policies, vendor due diligence, contractual safeguards, and technical and administrative controls that comply with applicable privacy legislation."]}, {"h3": "Use of Artificial Intelligence", "p": ["Bayshore HealthCare may use Artificial Intelligence (AI) tools to help improve our services and programs. When we use AI, your personal and health information is protected in the same way as all other information we collect."]}]}, {"h": "How do we keep your Information Safe", "blocks": [{"h3": "Handling Breaches or Unauthorized Disclosures", "p": ["In the event of a privacy breach or unauthorized disclosure of PI or PHI, Bayshore Healthcare will follow our prompt response protocols. Affected individuals will be notified without undue delay when required by law, and regulatory authorities will be informed in accordance with applicable federal and provincial legislation. All incidents are investigated to mitigate potential harm, prevent recurrence, and ensure full compliance with federal and provincial health privacy laws."]}, {"h3": "Security Safeguards", "p": ["Bayshore Healthcare is committed to protecting the PI and PHI of our clients, employees, and partners. We implement a comprehensive framework of technical, administrative, and physical safeguards designed to prevent unauthorized access, disclosure, alteration, or destruction of information. This includes secure electronic systems, access controls, staff training, encryption, and monitored physical storage facilities. These measures are continuously reviewed and updated to ensure compliance with federal and provincial privacy laws."]}, {"h3": "Third-Party Service Provider Accountability", "p": ["Bayshore Healthcare engages third-party service providers only after ensuring they meet stringent privacy and security requirements. All agreements with external vendors include legally binding clauses on confidentiality, data protection, breach reporting, and compliance with applicable Canadian privacy legislation. Providers are regularly assessed to confirm adherence to these obligations, ensuring the PI and PHI entrusted to them remains secure."]}, {"h3": "Marketing and Communications Data", "p": ["With your consent, Bayshore Healthcare may share updates, service notifications, or promotional materials. We obtain consent where required and ensure all communications comply with Canada’s Anti-Spam Legislation (CASL), PIPEDA, and Quebec’s Law 25. We may continue to communicate with clients and patients after services have ended, provided informed consent has been obtained. Individuals can withdraw consent at any time, and unsubscribe options are always provided."]}, {"h3": "Privacy Impact Assessments", "p": ["Bayshore Healthcare conducts Privacy Impact Assessments (PIAs) for all high-risk processing activities involving PI and PHI. PIAs help identify, evaluate, and mitigate potential privacy risks, ensuring that all new or significantly modified systems, programs, or services comply with applicable federal and provincial privacy requirements."]}, {"h3": "De-Identification and Anonymization", "p": ["Bayshore may de-identify or anonymize PI and/or PHI for purposes such as quality improvement, planning, research, analytics, and reporting. De-identified information—where direct identifiers are removed but re-identification remains possible—is still protected under Canadian privacy laws. Anonymized/de-identified information is permanently altered so individuals cannot be identified and is no longer considered personal information."]}, {"h3": "Information Regarding Children’s Information", "p": ["We collect, use, and disclose PI and PHI only with informed consent of the legal guardian of minors, and for clearly defined purposes related to care and service delivery. We practice the same safeguard measures as all PI and PHI in relation to our adult patient and clients."]}]}, {"h": "How do we store and how long do we keep your Personal Information", "img": ["legal-consent.jpg", "A home care nurse explaining a care plan to an older man and his daughter at a kitchen table"], "blocks": [{"h3": "Storage and Retention of Information", "p": ["We retain your personal information in accordance with applicable healthcare and privacy laws. Health records are kept for the minimum retention period required by provincial legislation and/or college standards – for example, at least 10 years from the date of last entry, or 10 years past the age of majority in the case of minors. After these periods, information/data is confidentially and securely destroyed."]}, {"h3": "Data Storage, Processing, and Ownership", "p": ["Your personal health information is collected, stored, and processed in accordance with Canadian privacy laws, including the Personal Information Protection and Electronic Documents Act (PIPEDA) and applicable provincial legislation. We ensure that your data is securely stored within Canada or in jurisdictions with equivalent privacy protections and is only accessed by authorized personnel for purposes directly related to your care or services. Where your information is transferred across borders, you have the right to be informed of the associated risks and the safeguards in place. You retain ownership of your personal information, and we are committed to transparency, consent, and safeguarding your privacy throughout its lifecycle."]}, {"h3": "Consent to Care and Services", "p": ["When you consent for care and services provided by Bayshore Healthcare, you or your authorized Substitute Decision Maker (SDM) agree to the treatment plan and the delivery of care and services, which may include nursing, personal support, therapy, and other health-related services as discussed. The nature, risks, and benefits of these services have been explained in a manner that is understandable, with the opportunity to ask questions and receive satisfactory answers. If needed, interpreter services or other communication supports are provided to ensure full understanding by you. Your consent may need to be received in writing or verbally based on regulatory requirements."]}]}, {"h": "Are you an Employee or Applicant?", "img": ["legal-interview.jpg", "A recruiter interviewing a job applicant in a bright meeting room"], "blocks": [{"h3": "How we use Employee Information", "p": ["We collect and use personal information from employees and contractors to support employment-related functions and ensure a safe, compliant, and efficient workplace. This includes information used for hiring and recruitment (e.g., assessing qualifications and conducting background checks), employment administration (e.g., payroll, benefits, and scheduling), and regulatory compliance (e.g., licensing and immunization records). We also use personal data to uphold occupational health and safety standards, manage secure access to systems and facilities, and conduct performance reviews or workplace investigations. With explicit consent, employee photographs and biographical profiles may be shared with clients to support service delivery and safety. Additionally, personal information is used to meet legal obligations under employment and privacy legislation."]}]}, {"h": "It’s your Choice", "blocks": [{"h3": "Your Consent and Choices", "p": ["You have the right to make informed choices about how your information is handled. This includes the ability to withdraw consent for certain uses, request access to or correction of your information, and ask questions about how your data is used or shared. Where applicable, we will inform you of the implications of withdrawing consent, particularly if it affects our ability to provide services. We are committed to respecting your preferences and will respond to all requests in accordance with privacy legislation."]}, {"h3": "Your Right to Access and Correct", "p": ["You have the right to access and request correction of your personal information; you can do so by putting your request in writing and forwarding the request to the Bayshore Privacy Office. In certain circumstances, you may request deletion, if information is no longer necessary, or restriction of your information, and object to specific types of processing.", "If you believe your privacy rights have been violated, please contact Bayshore Healthcare Privacy Officer. You also have the right to file a complaint with the relevant privacy regulator. In Canada, this may include the Office of the Privacy Commissioner of Canada (OPC) or your provincial privacy authority, such as the Information and Privacy Commissioner of Ontario or Commission d’accès à l’information du Québec, depending on your location and the nature of the concern."]}]}, {"h": "Changes to This Notice", "blocks": [{"p": ["Bayshore Healthcare regularly reviews and updates this Privacy Notice to reflect changes in privacy legislation, operational practices, and industry standards."]}, {"h3": "How to Contact Us", "p": ["If you have questions about this privacy notice, wish to exercise your privacy rights, or would like to file a complaint directly with us, please contact:"], "contact": true}, {"p": ["We are committed to responding to all inquiries in a timely and respectful manner, in accordance with applicable privacy laws."]}]}]}, "cookies": {"intro": "Some Carecor web pages use cookies for one of the following three practices:", "types": [["Single-session cookies", "Single-session cookies, which log users over a single session and do not maintain data over multiple sessions or visits,"], ["Multi-session analytics cookies", "Multi-session cookies for use in web analytics, which log users over multiple sessions purely to gather data to analyze web traffic statistics, and"], ["Persistent cookies", "Multi-session cookies for use as persistent identifiers (persistent cookies), which log users activities over multiple visits with the intent of remembering data, settings, or preferences unique to that visitor."]], "p": ["The Carecor’s website uses persistent cookies to improve users’ experience by remembering settings related to functionality. Other multi-session and single-session cookies are used in combination with the website’s analytics software for website improvements.", "You have the ability to accept or decline cookies. All Web browsers automatically accept cookies, but you can modify your browser settings to decline cookies if you prefer.", "By declining cookies, use of interactive features or online services that depend on cookies will not function as intended. If you choose to accept cookies, all browsers offer the ability to later delete cookies that you have accepted. If you choose to delete cookies, any settings and preferences controlled by those cookies will be deleted and may need to be automatically recreated upon a return visit."]}, "access": {"lead": "Carecor is committed to providing access to services for employees and clients that accommodates the needs of all individuals, including those with disabilities. We have developed a policy and a set of procedures to ensure our compliance with the Accessibility for Ontarians with Disabilities Acts (AODA), 2005. We strongly support this initiative.", "training": "Carecor staff has received training on practices and procedures that reflect the Accessibility Standards for Customer Service; such as, accommodating persons who use support persons or animals, persons who use assistive devices, persons who need help with communication. It is our goal to remove any barriers that keep someone with a disability from receiving access to services.", "support": "A person with a disability who is accompanied by a support person will be allowed to have that person accompany them on our premises. There is no fee charged for the support person.", "feedback": "We welcome feedback from you on the accessibility services provided by Carecor Health Services. You can provide your comments by letter, telephone or by email at info@carecor.com.", "policy": "Our Policy and Procedure on Accessibility Standard for Customer Service is available upon request. Please contact us by any of the above methods if you require assistance to use Carecor’s services. We will respond promptly."}};
+function L_IMG(f){return 'media/legal/'+f;}
+function legalTabs(cur){
+  return '<nav class="about-tabs" aria-label="Policies"><div class="wrap"><div class="at-in">'+[['privacy','Privacy Policy'],['cookies','Cookie Policy'],['accessibility','Accessibility']].map(function(t){return '<a href="#'+t[0]+'"'+(cur===t[0]?' aria-current="page"':'')+'>'+t[1]+'</a>';}).join('')+'</div></div></nav>';
+}
+function legalHero(id,eyebrow,title,lede,img,alt,pos,extra){
+  return '<section class="page-hero legal-hero" aria-labelledby="'+id+'"><div class="wrap ph-in"><div><p class="eyebrow">'+eyebrow+'</p><h1 id="'+id+'" class="h-xl" tabindex="-1">'+title+'</h1>'+(lede?'<p class="lede">'+lede+'</p>':'')+(extra||'')+'</div>'+frame(L_IMG(img),alt,'teal',pos||'50% 40%')+'</div></section>';
+}
+function legalRelated(cur){
+  var all=[['privacy','Privacy Policy','How we collect, use and protect personal information.','legal-privacy-hero.jpg'],['cookies','Cookie Policy','The cookies this website uses and how to manage them.','legal-cookies-hero.jpg'],['accessibility','Accessibility','Our commitment under the AODA and how to share feedback.','legal-access-hero.jpg']].filter(function(x){return x[0]!==cur;});
+  return '<section class="sec band-mist" aria-labelledby="lr-h"><div class="wrap"><div class="sec-head"><div><h2 id="lr-h" class="h-lg">More from <strong>our policies</strong></h2></div></div><div class="lr-grid">'+all.map(function(x){return '<a class="lr-card" href="#'+x[0]+'"><figure><img src="'+L_IMG(x[3])+'" alt="" loading="lazy"></figure><span><strong>'+x[1]+'</strong><span class="muted">'+x[2]+'</span><span class="n-more">Read'+I.right+'</span></span></a>';}).join('')+'</div></div></section>';
+}
+function slug(t){return 'pp-'+t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);}
+PAGES.privacy=function(){
+  var P=LEGAL.privacy;
+  var toc=P.sections.map(function(sec){return '<li><a href="#privacy" data-act="lgo" data-id="'+slug(sec.h)+'">'+esc(sec.h)+'</a></li>';}).join('');
+  var body=P.sections.map(function(sec){
+    return '<section class="lg-sec" id="'+slug(sec.h)+'" aria-labelledby="'+slug(sec.h)+'-h"><h2 id="'+slug(sec.h)+'-h" class="h-md">'+esc(sec.h)+'</h2>'+
+      (sec.img?'<figure class="lg-img"><img src="'+L_IMG(sec.img[0])+'" alt="'+esc(sec.img[1])+'" loading="lazy"></figure>':'')+
+      sec.blocks.map(function(b){
+        return (b.h3?'<h3 class="h-sm">'+esc(b.h3)+'</h3>':'')+b.p.map(function(x){return '<p>'+esc(x)+'</p>';}).join('')+
+          (b.contact?'<div class="lg-contact"><div><strong>Privacy Office</strong><span>Bayshore HealthCare</span></div>'+
+            '<a href="mailto:privacyofficer@bayshore.ca">'+I.mail+'<span><small>Email</small>privacyofficer@bayshore.ca</span></a>'+
+            '<a href="tel:+19058228075,77001">'+I.phone+'<span><small>Phone</small>905-822-8075 ext. 77001</span></a>'+
+            '<div class="lg-addr">'+I.pin+'<span><small>Mail</small>Bayshore HealthCare<br>2101 Hadwen Road<br>Mississauga, ON L5K 2L3</span></div></div>':'');
+      }).join('')+'</section>';
+  }).join('');
+  return legalTabs('privacy')+legalHero('privacy-h','Your privacy','Privacy <strong>Policy</strong>','How Carecor and Bayshore HealthCare collect, use, share and protect personal information.','legal-privacy-hero.jpg','A nurse holding a tablet at a hospital nursing station','35% 40%','<p><span class="pill teal">'+esc(P.effective)+'</span></p>')+
+    '<section class="sec tight" aria-label="Privacy policy"><div class="wrap lg-layout"><aside class="lg-toc" aria-label="On this page"><p class="lg-toc-h">On this page</p><ol>'+toc+'</ol><a class="btn btn-line btn-sm" href="mailto:privacyofficer@bayshore.ca">Contact the Privacy Office</a></aside><article class="lg-body">'+body+'</article></div></section>'+legalRelated('privacy');
+};
+PAGES.cookies=function(){
+  var C=LEGAL.cookies,icons=[I.clock,I.chart,I.reset];
+  return legalTabs('cookies')+legalHero('cookies-h','This website','Cookie <strong>Policy</strong>',null,'legal-cookies-hero.jpg','A healthcare worker browsing on a laptop at home in the evening','60% 45%')+
+    '<section class="sec tight" aria-labelledby="ck-types"><div class="wrap lg-narrow"><h2 id="ck-types" class="h-md">How we use cookies</h2><p class="lede">'+esc(C.intro)+'</p>'+
+    '<ol class="ck-grid">'+C.types.map(function(t,i){return '<li class="ck-card"><span class="ck-ico">'+(icons[i]||I.spark)+'</span><span class="step-n">0'+(i+1)+'</span><h3 class="h-sm">'+esc(t[0])+'</h3><p>'+esc(t[1])+'</p></li>';}).join('')+'</ol>'+
+    '<div class="lg-body ck-text"><h2 class="h-md">Your choices</h2>'+C.p.map(function(x){return '<p>'+esc(x)+'</p>';}).join('')+'</div></div></section>'+legalRelated('cookies');
+};
+PAGES.accessibility=function(){
+  var A=LEGAL.access;
+  var cards=[['legal-guide-dog.jpg','A woman who is blind entering an office lobby with her guide dog and a support person','Support persons and service animals'],['legal-entrance.jpg','An older man using a walker entering through a wide, step-free automatic door','Assistive devices'],['legal-communication.jpg','A staff member and an older visitor with a hearing aid looking at a tablet together','Help with communication']];
+  return legalTabs('accessibility')+legalHero('acc-h','AODA, 2005','Accessibility',esc(A.lead),'legal-access-hero.jpg','A receptionist welcoming a visitor who uses a wheelchair at an accessible front desk','62% 40%')+
+    '<section class="sec tight" aria-labelledby="acc-train"><div class="wrap"><div class="sec-head"><div><h2 id="acc-train" class="h-lg">Removing <strong>barriers</strong></h2></div><p class="muted">'+esc(A.training)+'</p></div>'+
+    '<div class="acc-grid">'+cards.map(function(c){return '<figure class="acc-card"><div class="acc-img"><img src="'+L_IMG(c[0])+'" alt="'+esc(c[1])+'" loading="lazy"></div><figcaption><h3 class="h-sm">'+c[2]+'</h3></figcaption></figure>';}).join('')+'</div>'+
+    '<div class="acc-callout">'+I.people+'<p>'+esc(A.support)+'</p></div></div></section>'+
+    '<section class="sec band-mist" aria-labelledby="acc-fb"><div class="wrap acc-fb"><div><h2 id="acc-fb" class="h-lg">We welcome <strong>your feedback</strong></h2><p class="lede">'+esc(A.feedback)+'</p><p>'+esc(A.policy)+'</p></div>'+
+    '<div class="acc-ways"><a href="mailto:info@carecor.com">'+I.mail+'<span><small>Email</small>info@carecor.com</span></a><a href="tel:+18884267425">'+I.phone+'<span><small>Phone</small>1-888-426-7425</span></a><div>'+I.pin+'<span><small>Letter</small>Carecor Health Services<br>5775 Yonge Street, Suite 1800<br>Toronto, ON M2M 4J1</span></div></div></div></section>'+legalRelated('accessibility');
+};
 PAGES.about=function(){
   return aboutTabs('about')+'<section class="page-hero" aria-labelledby="about-h"><div class="wrap ph-in"><div><p class="eyebrow">About Carecor · Since 1982</p><h1 id="about-h" class="h-xl" tabindex="-1">Over 40 years of <strong>excellence in health services.</strong></h1><p class="lede">For more than 40 years, Carecor has provided acute healthcare facilities with patient-facing staff. As staffing needs evolved, so did we, growing through partnerships and new services to become a leading healthcare staffing agency. From Unit Clerk to Registered Nurse, you’ll find Carecor people in roles throughout healthcare facilities.</p><p class="muted">Carecor Health Services is a division of Bayshore HealthCare.</p></div>'+frame(IMG.group,'A smiling Carecor nurse with colleagues','','50% 25%')+'</div></section>'+
   '<section class="sec" aria-labelledby="dir-h"><div class="wrap"><div class="sec-head"><div><h2 id="dir-h" class="h-lg">Our strategic <strong>direction</strong></h2></div></div><div class="trio">'+
@@ -1805,8 +1914,10 @@ function renderFab(scrollEnd){
 /* =====================================================================
    ROUTER + EVENTS
    ===================================================================== */
-var ROUTES=['home','find-work','roles','where-we-work','hire-staff','about','news','verify'];
-var PAGE_AUD={home:'','find-work':'seeker',roles:'seeker',verify:'seeker','hire-staff':'client','where-we-work':'',about:'',news:''};
+var ROUTES=['home','find-work','roles','where-we-work','hire-staff','about','news','verify','privacy','cookies','accessibility'];
+var PAGE_AUD={home:'','find-work':'seeker',roles:'seeker',verify:'seeker','hire-staff':'client','where-we-work':'',about:'',news:'',privacy:'',cookies:'',accessibility:''};
+function legalSpy(){if(S.route!=='privacy')return;var secs=$$('.lg-sec'),cur=null;secs.forEach(function(s){if(s.getBoundingClientRect().top<180)cur=s.id;});if(!cur&&secs[0])cur=secs[0].id;$$('.lg-toc a').forEach(function(a){a.setAttribute('aria-current',String(a.dataset.id===cur));});}
+window.addEventListener('scroll',legalSpy,{passive:true});
 function scrollToId(id){var el=document.getElementById(id);if(!el)return;var bar=$('#bar').offsetHeight;var y=el.getBoundingClientRect().top+window.pageYOffset-bar-8;window.scrollTo({top:Math.max(0,y),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
 if(/[?&]presenter/.test(location.search))document.documentElement.classList.add('presenter-on');
 function route(){
@@ -1819,8 +1930,9 @@ function route(){
     if(r==='find-work'){renderJobs();}
     if(r==='roles')renderRole();
     if(r==='hire-staff')renderClient();
+    if(r==='privacy')setTimeout(legalSpy,50);
     if(r==='news'){if(!S.newsKeep)S.newsSel=null;S.newsKeep=false;renderNews();}
-    var TT={home:'','find-work':'Find work',roles:'Roles we hire','where-we-work':'Where we work','hire-staff':'Hire staff',about:'About',news:'News and updates',verify:'Verify a recruiter'};
+    var TT={home:'','find-work':'Find work',roles:'Roles we hire','where-we-work':'Where we work','hire-staff':'Hire staff',about:'About',news:'News and updates',verify:'Verify a recruiter',privacy:'Privacy policy',cookies:'Cookie policy',accessibility:'Accessibility'};
     document.title=(TT[r]?TT[r]+' | ':'')+'Carecor Health Services';
     if(!S.A.picked){S.A.aud=PAGE_AUD[r];renderFab();}
   }
@@ -1874,6 +1986,7 @@ var ACT={
   fshift:function(t){S.J.shift=t.dataset.v;renderJobs();},
   npost:function(t){S.newsSel=t.dataset.id;if(S.route!=='news'){S.newsKeep=true;location.hash='news';}else{renderNews();window.scrollTo(0,0);var h=$('#na-h');if(h)h.focus({preventScroll:true});setTimeout(setupMotion,40);}return 'handled';},
   nback:function(){S.newsSel=null;if(S.route!=='news'){location.hash='news';}else{renderNews();window.scrollTo(0,0);var h=$('#news-h');if(h)h.focus({preventScroll:true});setTimeout(setupMotion,40);}return 'handled';},
+  lgo:function(t){scrollToId(t.dataset.id);return 'handled';},
   ncat:function(t){S.newsCat=t.dataset.v;renderNews();},
   dnclose:function(){var d=$('#draft-note');if(d)d.hidden=true;},
   fwmore:function(){S.J.show=(S.J.show||10)+10;renderJobs();},
