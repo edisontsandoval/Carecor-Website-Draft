@@ -1829,14 +1829,54 @@ function ask(q){
 }
 /* Voice: real speech-to-text where the browser supports it (Chrome, Edge, Safari), spoken answers, demo fallback elsewhere */
 var SR=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null;
-function speakable(t){return String(t).replace(/within\s*\[[^\]]*\]/g,'soon').replace(/\s*\[[^\]]*\]/g,'').replace(/\s+([.,;])/g,'$1').replace(/\s{2,}/g,' ');}
+/* Speech output: pick the most natural voice the visitor's browser offers, and shape the text so it reads aloud naturally */
+var PROV={ON:'Ontario',NS:'Nova Scotia',PE:'P.E.I.',BC:'B.C.',QC:'Quebec',NB:'New Brunswick'};
+function speakable(t){
+  return String(t)
+    .replace(/within\s*\[[^\]]*\]/g,'soon').replace(/\s*\[[^\]]*\]/g,'')
+    .replace(/\b(\d+)\s*km\b/g,'$1 kilometres')
+    .replace(/,\s*(ON|NS|PE|BC|QC|NB)\b/g,function(m,p){return ', '+PROV[p];})
+    .replace(/\bRPN\s*\/\s*LPN\b/g,'R.P.N. or L.P.N.').replace(/\bRNs\b/g,'R.N.s').replace(/\bRN\b/g,'R.N.').replace(/\bRPNs?\b/g,function(m){return m.length>3?'R.P.N.s':'R.P.N.';}).replace(/\bLPN\b/g,'L.P.N.').replace(/\bPSWs\b/g,'P.S.W.s').replace(/\bPSW\b/g,'P.S.W.').replace(/\bTCU\b/g,'transitional care unit').replace(/\bED\b/g,'emergency department')
+    .replace(/\s+-\s+/g,', ').replace(/\s*;\s*/g,'. ').replace(/\s*\(([^)]*)\)/g,', $1,')
+    .replace(/\s+([.,;])/g,'$1').replace(/,\s*,/g,',').replace(/,\./g,'.').replace(/\s{2,}/g,' ').trim();
+}
+var bestVoice=null;
+function pickVoice(){
+  if(!('speechSynthesis' in window))return null;
+  var vs=speechSynthesis.getVoices().filter(function(v){return /^en[-_]/i.test(v.lang);});
+  if(!vs.length)return null;
+  function score(v){var n=v.name,s=0;
+    if(/natural|neural/i.test(n))s+=60;          // Edge: "Microsoft Aria Online (Natural)"
+    if(/premium|enhanced/i.test(n))s+=50;        // Safari / macOS downloaded voices
+    if(/^Google /.test(n))s+=35;                 // Chrome: "Google US English"
+    if(/online/i.test(n))s+=15;
+    if(/Aria|Jenny|Ava|Emma|Clara|Samantha|Zoe|Allison|Libby|Sonia|Natasha/i.test(n))s+=10;
+    if(/en[-_]CA/i.test(v.lang))s+=8;else if(/en[-_]US/i.test(v.lang))s+=5;else if(/en[-_](GB|AU|IE)/i.test(v.lang))s+=3;
+    if(/Fred|Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Wobble|Zarvox|Trinoids|Whisper|Jester|Organ|Superstar|Ralph|Junior|Kathy|Grandpa|Grandma|Rocko|Shelley|Eddy|Flo|Reed|Sandy/i.test(n))s-=100; // novelty voices
+    if(v.localService===false)s+=2;
+    return s;}
+  vs.sort(function(a,b){return score(b)-score(a);});
+  return vs[0];
+}
+if('speechSynthesis' in window){bestVoice=pickVoice();try{speechSynthesis.addEventListener('voiceschanged',function(){bestVoice=pickVoice();});}catch(e){}}
 function speakOut(text,done0){
   var fired=false,done=function(){if(!fired){fired=true;done0();}};
-  later(done,Math.max(4000,speakable(text).split(' ').length*450));
+  var clean=speakable(text);
+  later(done,Math.max(4000,clean.split(' ').length*480));
   if(!('speechSynthesis' in window)){done();return;}
-  try{var u=new SpeechSynthesisUtterance(speakable(text));u.lang='en-CA';
-    var vs=speechSynthesis.getVoices(),v=vs.filter(function(x){return x.lang==='en-CA';})[0]||vs.filter(function(x){return /^en(-|_)/.test(x.lang);})[0];if(v)u.voice=v;
-    u.rate=1.02;u.onend=done;u.onerror=done;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(err){done();}
+  try{
+    if(!bestVoice)bestVoice=pickVoice();
+    // Short sentences, spoken one after another, sound more natural and avoid Chrome cutting off long speech
+    var parts=clean.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[clean];
+    speechSynthesis.cancel();
+    parts.forEach(function(sent,k){
+      var u=new SpeechSynthesisUtterance(sent.trim());
+      if(bestVoice){u.voice=bestVoice;u.lang=bestVoice.lang;}else u.lang='en-CA';
+      u.rate=/natural|neural|premium|enhanced|google/i.test(bestVoice&&bestVoice.name||'')?1:0.96;u.pitch=1;
+      if(k===parts.length-1){u.onend=done;u.onerror=done;}
+      speechSynthesis.speak(u);
+    });
+  }catch(err){done();}
 }
 function voiceAnswer(q){
   var t=q.toLowerCase();
