@@ -1714,7 +1714,7 @@ PAGES.privacy=function(){
 };
 PAGES.cookies=function(){
   var C=LEGAL.cookies,icons=[I.clock,I.chart,I.reset];
-  return legalTabs('cookies')+legalHero('cookies-h','This website','Cookie <strong>Policy</strong>',null,'legal-cookies-hero.jpg','A healthcare worker browsing on a laptop at home in the evening','60% 45%')+
+  return legalTabs('cookies')+legalHero('cookies-h','This website','Cookie <strong>Policy</strong>',null,'legal-cookies-hero.jpg','A nurse in scrubs smiling at her laptop on a sofa at home in the evening','100% 45%')+
     '<section class="sec tight" aria-labelledby="ck-types"><div class="wrap lg-narrow"><h2 id="ck-types" class="h-md">How we use cookies</h2><p class="lede">'+esc(C.intro)+'</p>'+
     '<ol class="ck-grid">'+C.types.map(function(t,i){return '<li class="ck-card"><span class="ck-ico">'+(icons[i]||I.spark)+'</span><span class="step-n">0'+(i+1)+'</span><h3 class="h-sm">'+esc(t[0])+'</h3><p>'+esc(t[1])+'</p></li>';}).join('')+'</ol>'+
     '<div class="lg-body ck-text"><h2 class="h-md">Your choices</h2>'+C.p.map(function(x){return '<p>'+esc(x)+'</p>';}).join('')+'</div></div></section>'+legalRelated('cookies');
