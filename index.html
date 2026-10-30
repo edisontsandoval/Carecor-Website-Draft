@@ -344,9 +344,13 @@ body.show-cz .cz::after{content:"Clear zone: height of the \201Co\201D on every 
 .lg-toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 112px);display:grid;gap:14px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--white)}
 .lg-toc-h{margin:0;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .lg-toc ol{margin:0;padding:0;list-style:none;display:grid;gap:2px;counter-reset:t}
-.lg-toc li{counter-increment:t}
+.lg-toc ol > li{counter-increment:t}
+.lg-sub{list-style:none;margin:2px 0 0 30px;padding:0 0 0 10px;border-left:2px solid var(--line)}
+.lg-sub a{font-size:13.5px;padding:6px 10px;color:var(--muted)}
+.lg-sub a::before{content:none}
+.lg-contact{scroll-margin-top:140px}
 .lg-toc a{display:flex;gap:10px;padding:8px 10px;border-radius:8px;color:var(--navy);text-decoration:none;font-size:14.5px;line-height:1.35;font-weight:500}
-.lg-toc a::before{content:counter(t,decimal-leading-zero);color:var(--orange-ink);font-weight:700;font-size:12px;padding-top:2px}
+.lg-toc ol > li > a::before{content:counter(t,decimal-leading-zero);color:var(--orange-ink);font-weight:700;font-size:12px;padding-top:2px}
 .lg-toc a:hover,.lg-toc a[aria-current="true"]{background:var(--mist)}
 .lg-toc a[aria-current="true"]{box-shadow:inset 3px 0 0 var(--orange)}
 .lg-body{display:grid;gap:14px;min-width:0;max-width:46rem}
@@ -1693,20 +1697,20 @@ function legalRelated(cur){
 function slug(t){return 'pp-'+t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);}
 PAGES.privacy=function(){
   var P=LEGAL.privacy;
-  var toc=P.sections.map(function(sec){return '<li><a href="#privacy" data-act="lgo" data-id="'+slug(sec.h)+'">'+esc(sec.h)+'</a></li>';}).join('');
+  var toc=P.sections.map(function(sec){var sub=sec.blocks.filter(function(b){return b.contact;})[0];return '<li><a href="#privacy" data-act="lgo" data-id="'+slug(sec.h)+'">'+esc(sec.h)+'</a>'+(sub?'<ul class="lg-sub"><li><a href="#privacy" data-act="lgo" data-id="pp-contact">'+esc(sub.h3)+'</a></li></ul>':'')+'</li>';}).join('');
   var body=P.sections.map(function(sec){
     return '<section class="lg-sec" id="'+slug(sec.h)+'" aria-labelledby="'+slug(sec.h)+'-h"><h2 id="'+slug(sec.h)+'-h" class="h-md">'+esc(sec.h)+'</h2>'+
       (sec.img?'<figure class="lg-img"><img src="'+L_IMG(sec.img[0])+'" alt="'+esc(sec.img[1])+'" loading="lazy"></figure>':'')+
       sec.blocks.map(function(b){
         return (b.h3?'<h3 class="h-sm">'+esc(b.h3)+'</h3>':'')+b.p.map(function(x){return '<p>'+esc(x)+'</p>';}).join('')+
-          (b.contact?'<div class="lg-contact"><div><strong>Privacy Office</strong><span>Bayshore HealthCare</span></div>'+
+          (b.contact?'<div class="lg-contact" id="pp-contact"><div><strong>Privacy Office</strong><span>Bayshore HealthCare</span></div>'+
             '<a href="mailto:privacyofficer@bayshore.ca">'+I.mail+'<span><small>Email</small>privacyofficer@bayshore.ca</span></a>'+
             '<a href="tel:+19058228075,77001">'+I.phone+'<span><small>Phone</small>905-822-8075 ext. 77001</span></a>'+
             '<div class="lg-addr">'+I.pin+'<span><small>Mail</small>Bayshore HealthCare<br>2101 Hadwen Road<br>Mississauga, ON L5K 2L3</span></div></div>':'');
       }).join('')+'</section>';
   }).join('');
   return legalTabs('privacy')+legalHero('privacy-h','Your privacy','Privacy <strong>Policy</strong>','How Carecor and Bayshore HealthCare collect, use, share and protect personal information.','legal-privacy-hero.jpg','A nurse holding a tablet at a hospital nursing station','35% 40%','<p><span class="pill teal">'+esc(P.effective)+'</span></p>')+
-    '<section class="sec tight" aria-label="Privacy policy"><div class="wrap lg-layout"><aside class="lg-toc" aria-label="On this page"><p class="lg-toc-h">On this page</p><ol>'+toc+'</ol><a class="btn btn-line btn-sm" href="mailto:privacyofficer@bayshore.ca">Contact the Privacy Office</a></aside><article class="lg-body">'+body+'</article></div></section>'+legalRelated('privacy');
+    '<section class="sec tight" aria-label="Privacy policy"><div class="wrap lg-layout"><aside class="lg-toc" aria-label="On this page"><p class="lg-toc-h">On this page</p><ol>'+toc+'</ol></aside><article class="lg-body">'+body+'</article></div></section>'+legalRelated('privacy');
 };
 PAGES.cookies=function(){
   var C=LEGAL.cookies,icons=[I.clock,I.chart,I.reset];
