@@ -1,12 +1,21 @@
 name: Refresh job listings
 
-# Every morning at 9 AM Toronto time. GitHub schedules in UTC, so this runs at
-# both 13:00 and 14:00 UTC and the script skips whichever one isn't 9 AM locally.
-# You can also run it any time from the Actions tab with "Run workflow".
+# Refreshes the job list every morning. GitHub runs scheduled jobs in UTC and often
+# starts them late when it is busy, so there are several runs: about 6 AM, 8 AM and
+# 9:45 AM Toronto time, plus a 1 PM catch-up. Only runs that find a change commit.
+# It also runs when this file or the script changes, and any time from the
+# Actions tab with "Run workflow".
 on:
   schedule:
-    - cron: "0 13 * * *"
-    - cron: "0 14 * * *"
+    - cron: "17 10 * * *"
+    - cron: "17 12 * * *"
+    - cron: "47 13 * * *"
+    - cron: "17 17 * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-jobs.yml"
+      - "scripts/update_jobs.py"
   workflow_dispatch:
 
 permissions:

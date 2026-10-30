@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Refresh the job listings on the Carecor draft site from the UKG job board.
 
-Runs every morning from GitHub Actions (.github/workflows/update-jobs.yml).
+Runs every morning (several times, for reliability) from GitHub Actions (.github/workflows/update-jobs.yml).
 It reads every posting on the public Carecor job board, rewrites the job data
 inside index.html and the "as of" date, and saves a copy to jobs.json.
 
@@ -84,12 +84,9 @@ def compact(o):
 
 def main():
     now = datetime.now(TZ)
-    # The workflow is scheduled at two UTC times so it lands on 9 AM Toronto time
-    # in both summer (EDT) and winter (EST). Skip the run that isn't 9 AM locally.
-    if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and now.hour != 9:
-        print(f"It is {now:%H:%M} in Toronto, not 9 AM. Skipping this run.")
-        return
-
+    # Several runs are scheduled each morning because GitHub can start scheduled
+    # jobs late or skip one when it is busy. Every run refreshes; if nothing on the
+    # board changed since the last run that day, there is nothing to commit.
     raw = fetch()
     opps = raw.get("opportunities") or []
     if not opps:

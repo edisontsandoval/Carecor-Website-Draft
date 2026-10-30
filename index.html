@@ -275,6 +275,10 @@ body.show-cz .cz::after{content:"Clear zone: height of the \201Co\201D on every 
 .trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 32px;padding-block:28px 8px}
 .trust div{display:flex;gap:14px;align-items:flex-start;min-width:0}
 .trust svg{width:30px;height:30px;color:var(--teal);flex:none;margin-top:2px}
+.trust .trust-seal{align-items:center;margin-top:-14px}
+.trust-seal img{width:64px;height:64px;flex:none;filter:drop-shadow(0 4px 10px rgba(27,36,82,.12))}
+.foot-seal{width:76px;height:76px;display:block}
+.why-seal{width:56px;height:56px;display:block;margin-bottom:4px}
 .trust strong{display:block;color:var(--navy);font-size:16px;line-height:1.35}
 .trust span{font-size:14px;color:var(--muted);line-height:1.45}
 
@@ -798,7 +802,7 @@ html:not(.presenter-on) .presenter{display:none!important}
       </div>
     </div>
     <div style="display:grid;gap:14px">
-      <h2 style="color:var(--white);font-size:20px;font-weight:600">Our offices</h2>
+      <h2 style="color:var(--white);font-size:20px;font-weight:600">Our Offices</h2>
       <div class="offices">
         <address><span class="reg">Toronto</span><strong>Head office</strong>5775 Yonge Street, Suite 1800<br>Toronto, ON M2M 4J1</address>
         <address><span class="reg">Ottawa</span><strong>Eastern Ontario</strong>1547 Merivale Road, Suite 220<br>Ottawa, ON K2G 4V3</address>
@@ -808,10 +812,10 @@ html:not(.presenter-on) .presenter{display:none!important}
       <p>Call <strong style="color:var(--white)">1-888-426-7425</strong> or email <strong style="color:var(--white)">info@carecor.com</strong></p>
     </div>
     <div class="foot-cols">
-      <div><strong>Job seekers</strong><a href="#find-work">Find work</a><a href="#roles">Roles we hire</a><a href="#where-we-work">Where we work</a><a href="#find-work" data-scroll="sec-pool">Join our talent pool</a></div>
-      <div><strong>Healthcare facilities</strong><a href="#hire-staff" data-scroll="sec-request">Request staff</a><a href="#hire-staff" data-scroll="sec-how">How we work</a><a href="#roles">Roles we staff</a></div>
+      <div><strong>Job Seekers</strong><a href="#find-work">Find work</a><a href="#roles">Roles we hire</a><a href="#where-we-work">Where we work</a><a href="#find-work" data-scroll="sec-pool">Join our talent pool</a></div>
+      <div><strong>Healthcare Facilities</strong><a href="#hire-staff" data-scroll="sec-request">Request staff</a><a href="#hire-staff" data-scroll="sec-how">How we work</a><a href="#roles">Roles we staff</a></div>
       <div><strong>Carecor</strong><a href="#about">About us</a><a href="#verify">Verify a recruiter</a><a href="#news">News and updates</a></div>
-      <div><strong>Accreditation</strong><span>Accreditation Canada, Accredited with Exemplary Standing</span></div>
+      <div><strong>Accreditation</strong><img class="foot-seal" src="media/brand/accreditation-canada-seal.svg" alt="Accreditation Canada seal" width="76" height="76"><span>Accreditation Canada, Accredited with Exemplary Standing</span></div>
     </div>
     <div class="foot-bottom">
       <span><span>&copy; 2026 Carecor Health Services Ltd</span><a href="#" data-act="top">Back to top</a></span>
@@ -1077,6 +1081,43 @@ if(!REDUCED&&matchMedia('(hover:hover) and (pointer:fine)').matches){
 }
 
 /* ---------- navigation ---------- */
+
+/* Headings use title case. Words in SMALL stay lower case unless they open or close the heading
+   or follow a colon. Words that already contain a capital, a digit or a symbol (RN, PSWs, #TeamCarecor,
+   @carecor.com, 1:1) are left exactly as written. */
+var TC_SMALL=/^(a|an|the|and|but|or|nor|for|so|yet|as|at|by|in|of|off|on|per|to|up|via|vs)$/;
+var TC_SEL='h1,h2,h3,h4,.trust strong,.foot-cols > div > strong,.role-card strong,.region-detail > div > strong,.p-title strong';
+function tcWord(w,force){
+  return w.split(/([-‑])/).map(function(part,i){
+    if(!/^[a-z][a-z’']*$/.test(part))return part;
+    if(!force&&i===0&&TC_SMALL.test(part))return part;
+    if(i>0&&TC_SMALL.test(part)&&part.length<3)return part;
+    return part.charAt(0).toUpperCase()+part.slice(1);
+  }).join('');
+}
+function titleCase(el){
+  if(el.dataset.tc===el.textContent)return;
+  if(!/^H[1-4]$/.test(el.tagName)&&/[.!?]\s*$/.test(el.textContent))return;
+  var nodes=[],w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),n;
+  while((n=w.nextNode()))nodes.push(n);
+  var full=nodes.map(function(t){return t.nodeValue;}).join('');
+  var re=/[^\s—–]+/g,m,words=[];
+  while((m=re.exec(full)))words.push({s:m.index,t:m[0]});
+  if(!words.length)return;
+  var out=full.split('');
+  words.forEach(function(wd,i){
+    var lead=wd.t.match(/^[“"‘(]*/)[0],core=wd.t.slice(lead.length),tail=core.match(/[”"’),.:;!?]*$/)[0];core=core.slice(0,core.length-tail.length);
+    var prev=i?words[i-1].t:'',force=i===0||i===words.length-1||/,$/.test(tail)||/[:?!—]$/.test(prev)||/[—–]/.test(full.slice(i?words[i-1].s+words[i-1].t.length:0,wd.s));
+    var nc=tcWord(core,force);
+    if(nc!==core)for(var k=0;k<nc.length;k++)out[wd.s+lead.length+k]=nc.charAt(k);
+  });
+  var res=out.join(''),pos=0;
+  nodes.forEach(function(t){var len=t.nodeValue.length;var v=res.slice(pos,pos+len);if(v!==t.nodeValue)t.nodeValue=v;pos+=len;});
+  el.dataset.tc=el.textContent;
+}
+function titleCaseAll(root){$$(TC_SEL,root||document).forEach(titleCase);}
+var tcQueued=false;
+new MutationObserver(function(){if(tcQueued)return;tcQueued=true;requestAnimationFrame(function(){tcQueued=false;titleCaseAll();});}).observe(document.documentElement,{childList:true,subtree:true});
 var NAV=[['home','Home'],['find-work','Find work'],['roles','Roles'],['where-we-work','Where we work'],['hire-staff','Hire staff'],['about','About']];
 function renderNav(){
   var cur=S.route==='news'?'about':S.route;
@@ -1127,7 +1168,7 @@ PAGES.home=function(){
       '<div class="stat ph-stat"><b><span class="ph">[XX]%</span></b><span class="meter" aria-hidden="true"><i></i></span><span>shift fill rate <span class="ph">[validate with Ops]</span></span></div>'+
     '</div>'+
     '<div class="trust">'+
-      '<div>'+I.award+'<p><strong>Accreditation Canada</strong><span>Accredited with Exemplary Standing</span></p></div>'+
+      '<div class="trust-seal"><img src="media/brand/accreditation-canada-seal.svg" alt="Accreditation Canada seal: Accredited with Exemplary Standing" width="64" height="64"><p><strong>Accreditation Canada</strong><span>Accredited with Exemplary Standing</span></p></div>'+
       '<div>'+I.home+'<p><strong><a class="trust-link" href="#about" data-scroll="sec-bayshore">Part of Bayshore HealthCare</a></strong><span>Carecor is a division of Bayshore HealthCare</span></p></div>'+
       '<div>'+I.cap+'<p><strong>$1,000 scholarship</strong><span>For staff advancing their education</span></p></div>'+
       '<div>'+I.heart+'<p><strong>Employee benefits program</strong><span>'+ph('[Eligibility summary]')+'</span></p></div>'+
@@ -1600,7 +1641,7 @@ PAGES.about=function(){
     '<p class="note" style="margin-top:18px">Bayshore figures from bayshore.ca, October 2026. Placeholder copy for the team to review.</p>'+
   '</div></section>'+
   '<section class="sec band-mist" aria-labelledby="cred-h"><div class="wrap"><div class="sec-head"><div><h2 id="cred-h" class="h-lg">Why people <strong>choose Carecor</strong></h2></div></div><div class="why">'+
-    [['Accreditation Canada','We hold Exemplary Standing and uphold the same hiring standards and patient care delivery as the facilities we serve.'],['Experience','A wide range of hospital contracts and units lets you build your skills and confidence as a healthcare professional.'],['Culture','Many of our office staff are former healthcare providers who understand your needs first-hand.'],['Flexibility','Part-time, full-time or casual. Update availability and accept placements from your phone, tablet or computer.'],['$1,000 scholarship','Supporting staff who are advancing their education. [Eligibility details]'],['Benefits program','Competitive pay and an employee group benefits program for eligible staff. [Eligibility details]']].map(function(c){return '<div class="card"><h3 class="h-sm">'+c[0]+'</h3><p>'+ph(c[1])+'</p></div>';}).join('')+
+    [['Accreditation Canada','We hold Exemplary Standing and uphold the same hiring standards and patient care delivery as the facilities we serve.'],['Experience','A wide range of hospital contracts and units lets you build your skills and confidence as a healthcare professional.'],['Culture','Many of our office staff are former healthcare providers who understand your needs first-hand.'],['Flexibility','Part-time, full-time or casual. Update availability and accept placements from your phone, tablet or computer.'],['$1,000 scholarship','Supporting staff who are advancing their education. [Eligibility details]'],['Benefits program','Competitive pay and an employee group benefits program for eligible staff. [Eligibility details]']].map(function(c){return '<div class="card">'+'<h3 class="h-sm">'+c[0]+'</h3><p>'+ph(c[1])+'</p></div>';}).join('')+
   '</div></div></section>'+
   '<section class="sec tight band-mist" id="sec-contact" aria-labelledby="contact-h"><div class="wrap contact-band"><div style="display:grid;gap:8px;max-width:42rem"><h2 id="contact-h" class="h-md">Get in touch</h2><p>Call <strong style="color:var(--navy)">1-888-426-7425</strong>, email <strong style="color:var(--navy)">info@carecor.com</strong> or visit one of our offices in Toronto, Ottawa, Mississauga or Halifax, listed at the bottom of every page.</p></div><div class="btn-row"><a class="btn btn-orange" href="#find-work">Find work</a><a class="btn btn-purple" href="#hire-staff" data-scroll="sec-request">Request staff</a></div></div></section>';
 };
