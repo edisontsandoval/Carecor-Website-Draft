@@ -628,6 +628,8 @@ details p{margin-top:8px}
 .foot{background:var(--footer);color:var(--footer-text);font-size:15px}
 .foot a{color:var(--white)}
 .foot-in{display:grid;gap:40px;padding-block:clamp(40px,5vw,64px) 28px}
+/* Leave room under the last footer row so the floating Ask Carecor and Back to top buttons never cover it */
+.foot-in{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
 .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
 .foot-brand{--logo-w:180px;margin-left:calc(var(--logo-w) * -0.14)}
 .foot-social{display:flex;gap:10px;flex-wrap:wrap}
@@ -659,6 +661,8 @@ html:not(.presenter-on) .presenter{display:none!important}
 .fab{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;flex-direction:column;align-items:flex-end;gap:12px;pointer-events:none}
 .fab > *{pointer-events:auto}
 .fab-row{display:flex;gap:10px;align-items:center;transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}
+.fab.on-dark .ask-fab{background:var(--white);color:var(--navy)}
+.fab.on-dark .mic-fab{border-color:transparent}
 .fab.tuck .fab-row{opacity:0;transform:translateY(18px);visibility:hidden;pointer-events:none;transition:opacity .25s,transform .3s,visibility 0s linear .3s}
 .mic-fab{width:54px;height:54px;border-radius:999px;border:1px solid var(--line);background:var(--white);color:var(--navy);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -10px rgba(27,36,82,.6)}
 .mic-fab svg{width:22px;height:22px}
@@ -1874,6 +1878,7 @@ function fabTuck(){
   var f=$('#fab'),h=$('.hero-dock')||$('.hero');if(!f)return;
   var t=!S.A.open&&S.route==='home'&&h&&h.getBoundingClientRect().bottom>window.innerHeight-100;
   f.classList.toggle('tuck',!!t);
+  var ft=$('#footer');f.classList.toggle('on-dark',!!(ft&&ft.getBoundingClientRect().top<window.innerHeight-60));
 }
 window.addEventListener('scroll',fabTuck,{passive:true});window.addEventListener('resize',fabTuck);
 function renderFab(scrollEnd){
