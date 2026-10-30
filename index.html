@@ -1721,7 +1721,7 @@ PAGES.cookies=function(){
 };
 PAGES.accessibility=function(){
   var A=LEGAL.access;
-  var cards=[['legal-guide-dog.jpg','A woman who is blind entering an office lobby with her guide dog and a support person','Support persons and service animals'],['legal-entrance.jpg','An older man using a walker entering through a wide, step-free automatic door','Assistive devices'],['legal-communication.jpg','A staff member and an older visitor with a hearing aid looking at a tablet together','Help with communication']];
+  var cards=[['legal-guide-dog.jpg','A woman who is blind entering an office lobby with her guide dog and a support person','Support persons and service animals'],['legal-entrance.jpg','An older man using a walker entering through open automatic sliding doors while a staff member greets him from inside','Assistive devices'],['legal-communication.jpg','A staff member and an older visitor with a hearing aid looking at a tablet together','Help with communication']];
   return legalTabs('accessibility')+legalHero('acc-h','AODA, 2005','Accessibility',esc(A.lead),'legal-access-hero.jpg','A receptionist welcoming a visitor who uses a wheelchair at an accessible front desk','62% 40%')+
     '<section class="sec tight" aria-labelledby="acc-train"><div class="wrap"><div class="sec-head"><div><h2 id="acc-train" class="h-lg">Removing <strong>barriers</strong></h2></div><p class="muted">'+esc(A.training)+'</p></div>'+
     '<div class="acc-grid">'+cards.map(function(c){return '<figure class="acc-card"><div class="acc-img"><img src="'+L_IMG(c[0])+'" alt="'+esc(c[1])+'" loading="lazy"></div><figcaption><h3 class="h-sm">'+c[2]+'</h3></figcaption></figure>';}).join('')+'</div>'+
