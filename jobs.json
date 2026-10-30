@@ -1,7 +1,24 @@
 {
- "checked": "2026-10-30T12:37-04:00",
- "count": 25,
+ "checked": "2026-10-30T17:33-04:00",
+ "count": 26,
  "jobs": [
+  {
+   "id": "a1d8dc0d-e90d-4e9d-a05d-63f8db7af0a6",
+   "t": "Scheduling Coordinator",
+   "req": "SCHED003376",
+   "ft": true,
+   "cat": "Administrative",
+   "d": "2026-10-30",
+   "loc": [
+    [
+     "Halifax",
+     "NS",
+     44.654,
+     -63.628
+    ]
+   ],
+   "b": "Job Summary\nThe Scheduling Coordinator plays a crucial role in healthcare settings by ensuring that healthcare providers are scheduled effectively to meet the needs of clients. This involves a variety of tasks and responsibilities: Understanding Staffing Requirements, Maintaining Provider Availability Information, Matching Providers to Shifts,\nCommunicating Schedules, Handling Schedule Changes and Reporting. This rol"
+  },
   {
    "id": "dbc8f7a0-5c93-441f-ab9d-11f678be6126",
    "t": "Personal Support Worker - Sarnia, ON (North)",
