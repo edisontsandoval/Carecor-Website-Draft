@@ -1,7 +1,24 @@
 {
- "checked": "2026-11-02T15:22-05:00",
- "count": 26,
+ "checked": "2026-11-02T16:45-05:00",
+ "count": 27,
  "jobs": [
+  {
+   "id": "8018c048-a0a2-4c5f-959e-58586b4e8a83",
+   "t": "Registered Practical Nurse (RPN) – Clinical Specialist",
+   "req": "REGIS002998",
+   "ft": false,
+   "cat": "Nurse",
+   "d": "2026-11-02",
+   "loc": [
+    [
+     "Toronto",
+     "ON",
+     43.68,
+     -79.321
+    ]
+   ],
+   "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) or Registered Nurse (RN) to support specialty medical clinics in long‑term care homes across the Greater Toronto Surrounding Areas. This role focuses on assisting with the administration of spasticity medications and providing high‑quality clinical and administrative support to physicians, LTC staff, and residents."
+  },
   {
    "id": "a1d8dc0d-e90d-4e9d-a05d-63f8db7af0a6",
    "t": "Scheduling Coordinator",
