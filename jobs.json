@@ -1,6 +1,6 @@
 {
- "checked": "2026-11-05T17:42-05:00",
- "count": 28,
+ "checked": "2026-11-06T12:30-05:00",
+ "count": 27,
  "jobs": [
   {
    "id": "a7aabddd-6e41-4dc9-a969-bde5cf86659b",
@@ -18,23 +18,6 @@
     ]
    ],
    "b": "Carecor Health Services is looking for dedicated and compassionate Occupational Therapists to join our amazing team.\n\nAs an Occupational Therapist, you will work closely with clients to assess their physical, cognitive, and functional abilities, helping them achieve greater independence and quality of life. We are looking to build a pool of candidates for a future opportunity."
-  },
-  {
-   "id": "8018c048-a0a2-4c5f-959e-58586b4e8a83",
-   "t": "Registered Practical Nurse (RPN) – Clinical Specialist",
-   "req": "REGIS002998",
-   "ft": false,
-   "cat": "Nurse",
-   "d": "2026-11-02",
-   "loc": [
-    [
-     "Toronto",
-     "ON",
-     43.68,
-     -79.321
-    ]
-   ],
-   "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) or Registered Nurse (RN) to support specialty medical clinics in long‑term care homes across the Greater Toronto Surrounding Areas. This role focuses on assisting with the administration of spasticity medications and providing high‑quality clinical and administrative support to physicians, LTC staff, and residents."
   },
   {
    "id": "a1d8dc0d-e90d-4e9d-a05d-63f8db7af0a6",
