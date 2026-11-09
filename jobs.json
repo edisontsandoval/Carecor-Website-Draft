@@ -1,7 +1,54 @@
 {
- "checked": "2026-11-08T16:13-05:00",
+ "checked": "2026-11-09T15:44-05:00",
  "count": 27,
  "jobs": [
+  {
+   "id": "26a97a43-d654-4e50-b4ad-65b9b1c27e20",
+   "t": "Gestionnaire des opérations cliniques",
+   "req": "CLINI003383",
+   "ft": true,
+   "cat": "Administrative",
+   "d": "2026-11-09",
+   "loc": [
+    [
+     "Québec",
+     "QC",
+     46.916,
+     -71.15
+    ],
+    [
+     "Laval",
+     "QC",
+     45.561,
+     -73.681
+    ],
+    [
+     "Montréal",
+     "QC",
+     45.509,
+     -73.554
+    ],
+    [
+     "Cornwall",
+     "ON",
+     45.048,
+     -74.828
+    ],
+    [
+     "Ottawa",
+     "ON",
+     45.206,
+     -76.016
+    ],
+    [
+     "Toronto",
+     "ON",
+     43.654,
+     -79.384
+    ]
+   ],
+   "b": "Le ou la Gestionnaire des opérations cliniques, sous la direction du Directeur national ou de la Directrice nationale, est responsable de la prestation des soins et des services aux clients et veille au respect des normes de pratique internes et externes.\n\nCette personne soutient les activités de recrutement, supervise les employés administratifs et les employés sur le terrain, et coordonne, au besoin, les activités "
+  },
   {
    "id": "a7aabddd-6e41-4dc9-a969-bde5cf86659b",
    "t": "Occupational Therapist (Evergreen posting)",
@@ -315,23 +362,6 @@
     ]
    ],
    "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) to support specialty medical clinics in long term care homes across Ottawa, Ontario. This role focuses on assisting with the administration of spasticity medications and providing high quality clinical and administrative support to physicians, LTC staff, and residents."
-  },
-  {
-   "id": "cf27941d-65ef-45e9-8dab-cdd387fcc9e4",
-   "t": "Community Personal Support Worker - Oxford County, ON",
-   "req": "COMMU003178",
-   "ft": false,
-   "cat": "Support Worker",
-   "d": "2026-09-22",
-   "loc": [
-    [
-     "Oxford County",
-     "ON",
-     43.109,
-     -80.769
-    ]
-   ],
-   "b": "Carecor is seeking dedicated and compassionate Community Personal Support Workers to join our community care team. In this role, you will travel to clients’ homes to provide high quality personal care and support that empowers individuals to live safely and independently in their own environment."
   },
   {
    "id": "1878957a-615a-46e3-8f59-79d73f59b925",
