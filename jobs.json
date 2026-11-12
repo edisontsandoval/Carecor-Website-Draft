@@ -1,7 +1,41 @@
 {
- "checked": "2026-11-12T13:20-05:00",
- "count": 27,
+ "checked": "2026-11-12T15:03-05:00",
+ "count": 29,
  "jobs": [
+  {
+   "id": "8018c048-a0a2-4c5f-959e-58586b4e8a83",
+   "t": "Registered Practical Nurse (RPN) – Clinical Specialist",
+   "req": "REGIS002998",
+   "ft": false,
+   "cat": "Nurse",
+   "d": "2026-11-12",
+   "loc": [
+    [
+     "Toronto",
+     "ON",
+     43.68,
+     -79.321
+    ]
+   ],
+   "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) or Registered Nurse (RN) to support specialty medical clinics in long‑term care homes across the Greater Toronto Surrounding Areas. This role focuses on assisting with the administration of spasticity medications and providing high‑quality clinical and administrative support to physicians, LTC staff, and residents."
+  },
+  {
+   "id": "0bea7c2d-d7db-4284-82cb-32f055673749",
+   "t": "Personal Support Worker - Casual",
+   "req": "PERSO003336",
+   "ft": false,
+   "cat": "Support Worker",
+   "d": "2026-11-12",
+   "loc": [
+    [
+     "Hamilton",
+     "ON",
+     43.478,
+     -79.98
+    ]
+   ],
+   "b": "Carecor is looking for dedicated and compassionate Personal Support Workers to join our amazing team working in the Hamilton area hospitals. We’re ready when you are! \n\nUnder the direction of facility nursing staff, you will perform floor and observational care duties - helping to create an environment that promotes optimal physical, social, and emotional well-being for patients. For each assignment, you will be in o"
+  },
   {
    "id": "26a97a43-d654-4e50-b4ad-65b9b1c27e20",
    "t": "Gestionnaire des opérations cliniques",
