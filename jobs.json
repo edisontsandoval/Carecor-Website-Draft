@@ -1,7 +1,58 @@
 {
- "checked": "2026-11-17T18:52-05:00",
- "count": 29,
+ "checked": "2026-11-18T13:51-05:00",
+ "count": 30,
  "jobs": [
+  {
+   "id": "b23b4f93-0892-4b00-bf80-a057478b45e4",
+   "t": "Travel Nurse - Emergency Department",
+   "req": "TRAVE003426",
+   "ft": true,
+   "cat": "Nurse",
+   "d": "2026-11-18",
+   "loc": [
+    [
+     "Vancouver",
+     "BC",
+     49.262,
+     -123.113
+    ]
+   ],
+   "b": "Carecor is looking for dedicated and compassionate Registered Nurses (RNs) who are interested in travel opportunities across British Columbia. Join our team and bring your clinical experience to remote hospitals and healthcare facilities, where you can make a meaningful difference in the lives of patients and communities while gaining valuable experience in diverse healthcare settings. \n\nYou will provide care accordi"
+  },
+  {
+   "id": "ae09093f-cf46-4495-8ff0-d530f785f278",
+   "t": "Registered Practical Nurse (RPN) – Clinical Specialist",
+   "req": "REGIS003425",
+   "ft": false,
+   "cat": "Nurse",
+   "d": "2026-11-18",
+   "loc": [
+    [
+     "Sudbury",
+     "ON",
+     47.897,
+     -83.223
+    ]
+   ],
+   "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) to support specialty medical clinics in long term care homes across Sudbury, Ontario. This role focuses on assisting with the administration of spasticity medications and providing high quality clinical and administrative support to physicians, LTC staff, and residents."
+  },
+  {
+   "id": "c67865b5-7650-4f9a-aea7-e439a6b31494",
+   "t": "Travel Nurse - Emergency Department",
+   "req": "REGIS003424",
+   "ft": true,
+   "cat": "Nurse",
+   "d": "2026-11-18",
+   "loc": [
+    [
+     "Digby",
+     "NS",
+     44.619,
+     -65.81
+    ]
+   ],
+   "b": "Carecor is looking for dedicated and compassionate Registered Nurses (RNs) who are interested in travel opportunities across Nova Scotia. Join our team and bring your clinical experience to remote hospitals and healthcare facilities, where you can make a meaningful difference in the lives of patients and communities while gaining valuable experience in diverse healthcare settings. \n\nYou will provide care according to"
+  },
   {
    "id": "71360244-02ce-473d-be25-843351fd2954",
    "t": "Community Personal Support Worker - Norfolk, ON",
@@ -169,23 +220,6 @@
    "b": "Carecor is seeking dedicated and compassionate Personal Support Workers (PSWs) to join our community care team. In this role, you will travel to clients’ homes to provide high quality personal care and support that empowers individuals to live safely and independently in their own environment."
   },
   {
-   "id": "cc42dabe-1816-4d7f-9bb2-f1882bf6c4a7",
-   "t": "Community Personal Support Worker - Grand Bend, ON",
-   "req": "COMMU003294",
-   "ft": false,
-   "cat": "Support Worker",
-   "d": "2026-10-15",
-   "loc": [
-    [
-     "Grand Bend",
-     "ON",
-     43.317,
-     -81.75
-    ]
-   ],
-   "b": "Carecor is seeking dedicated and compassionate Community Personal Support Workers to join our community care team. In this role, you will travel to clients’ homes to provide high quality personal care and support that empowers individuals to live safely and independently in their own environment."
-  },
-  {
    "id": "215376f9-331b-4fe5-be4e-22f66941f294",
    "t": "Clinical Operations Manager",
    "req": "CLINI003302",
@@ -328,23 +362,6 @@
     ]
    ],
    "b": "Carecor is looking for dedicated and compassionate Registered Nurses (medical/surgical) to join our amazing team working in the Halifax Regional Municipality and surrounding area hospitals. We’re ready when you are! \n \nUnder the direction of the facility charge nurse or registered nurse, you will provide care according to the Nova Scotia College of Nursing, the Standards of Practice of Carecor, and the healthcare fac"
-  },
-  {
-   "id": "e38432d0-a7de-4602-a0c0-0f7628303b2f",
-   "t": "Registered Practical Nurse (RPN) – Clinical Specialist",
-   "req": "REGIS003290",
-   "ft": false,
-   "cat": "Nurse",
-   "d": "2026-09-29",
-   "loc": [
-    [
-     "Woodstock",
-     "ON",
-     43.13,
-     -80.757
-    ]
-   ],
-   "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) to support specialty medical clinics in long term care homes across Travistock and Woodstock, Ontario. This role focuses on assisting with the administration of spasticity medications and providing high quality clinical and administrative support to physicians, LTC staff, and residents."
   },
   {
    "id": "0998afb0-5d83-4043-beb9-7ea473d952cd",
