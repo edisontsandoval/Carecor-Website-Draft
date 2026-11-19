@@ -1,7 +1,24 @@
 {
- "checked": "2026-11-18T18:25-05:00",
+ "checked": "2026-11-19T13:59-05:00",
  "count": 30,
  "jobs": [
+  {
+   "id": "e15082ba-7e51-4b17-8b7e-157305f9e26e",
+   "t": "Registered Nurse – Operating Room",
+   "req": "REGIS003427",
+   "ft": true,
+   "cat": "Nurse",
+   "d": "2026-11-19",
+   "loc": [
+    [
+     "Regina",
+     "SK",
+     50.448,
+     -104.616
+    ]
+   ],
+   "b": "Carecor is seeking skilled and compassionate Perioperative Registered Nurses (RNs) to join our healthcare team. Registered Nurses play a critical role in delivering high-quality patient care across a wide range of healthcare settings. RNs assess, monitor, and document patient health, administer medications and treatments, assist with clinical procedures, and educate patients and their families on health management an"
+  },
   {
    "id": "b23b4f93-0892-4b00-bf80-a057478b45e4",
    "t": "Travel Nurse - Emergency Department",
@@ -265,29 +282,6 @@
     ]
    ],
    "b": "The Clinical Operations Manager, under the direction of the National Director, is responsible for the delivery of care and service to clients and ensures compliance with internal and external standards of practice. She or he supports recruitment activities and supervises Administrative and Field employees and coordinates clinical education and in-service activities as required. The Clinical Operations Manager, in kee"
-  },
-  {
-   "id": "5ea9a28f-bb47-4f16-a9f1-dfdabf5b226e",
-   "t": "Community Personal Support Worker",
-   "req": "COMMU003300",
-   "ft": false,
-   "cat": "Support Worker",
-   "d": "2026-10-13",
-   "loc": [
-    [
-     "North Dundas",
-     "ON",
-     45.087,
-     -75.374
-    ],
-    [
-     "South Dundas",
-     "ON",
-     44.948,
-     -75.266
-    ]
-   ],
-   "b": "Carecor is seeking dedicated and compassionate Personal Support Workers to join our community care team. In this role, you will travel to clients’ homes to provide high quality personal care and support that empowers individuals to live safely and independently in their own environment."
   },
   {
    "id": "dae1041b-41d0-478e-aea1-826f26a56e1d",
