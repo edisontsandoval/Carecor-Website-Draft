@@ -1,7 +1,41 @@
 {
- "checked": "2026-11-19T18:37-05:00",
- "count": 30,
+ "checked": "2026-11-20T13:37-05:00",
+ "count": 31,
  "jobs": [
+  {
+   "id": "b2c0cbe0-7d16-4f8c-b6eb-5e992a58f40d",
+   "t": "Community Nurse",
+   "req": "COMMU003428",
+   "ft": true,
+   "cat": "Nurse",
+   "d": "2026-11-20",
+   "loc": [
+    [
+     "Midland",
+     "ON",
+     44.749,
+     -79.889
+    ]
+   ],
+   "b": "Carecor Health Services is a leading healthcare staffing and patient care solutions provider committed to connecting skilled healthcare professionals with hospitals, long-term care homes, community agencies, and healthcare organizations across Canada. For over 35 years, Carecor has been dedicated to delivering exceptional patient care while creating rewarding career opportunities for healthcare professionals.\n\nWe are"
+  },
+  {
+   "id": "3a6614da-8e67-454f-a976-0068bf3866ab",
+   "t": "Community Nurse",
+   "req": "COMMU003429",
+   "ft": true,
+   "cat": "Nurse",
+   "d": "2026-11-20",
+   "loc": [
+    [
+     "Orillia",
+     "ON",
+     44.609,
+     -79.421
+    ]
+   ],
+   "b": "Carecor Health Services is a leading healthcare staffing and patient care solutions provider committed to connecting skilled healthcare professionals with hospitals, long-term care homes, community agencies, and healthcare organizations across Canada. For over 35 years, Carecor has been dedicated to delivering exceptional patient care while creating rewarding career opportunities for healthcare professionals.\n\nWe are"
+  },
   {
    "id": "e15082ba-7e51-4b17-8b7e-157305f9e26e",
    "t": "Registered Nurse – Operating Room",
@@ -356,23 +390,6 @@
     ]
    ],
    "b": "Carecor is looking for dedicated and compassionate Registered Nurses (medical/surgical) to join our amazing team working in the Halifax Regional Municipality and surrounding area hospitals. We’re ready when you are! \n \nUnder the direction of the facility charge nurse or registered nurse, you will provide care according to the Nova Scotia College of Nursing, the Standards of Practice of Carecor, and the healthcare fac"
-  },
-  {
-   "id": "0998afb0-5d83-4043-beb9-7ea473d952cd",
-   "t": "Acute Respite Care Nurse",
-   "req": "ACUTE003283",
-   "ft": false,
-   "cat": "Nurse",
-   "d": "2026-09-27",
-   "loc": [
-    [
-     "Toronto",
-     "ON",
-     43.643,
-     -79.386
-    ]
-   ],
-   "b": "Carecor Health Services is seeking dedicated Registered Nurses (RNs) and Registered Practical Nurses (RPNs) to provide high-quality, patient-centered care within a specialized healthcare setting. In this role, you will support a 24/7 short-term medical respite program that offers individuals experiencing homelessness, housing insecurity, or social isolation a safe and supportive environment to recover from acute medi"
   },
   {
    "id": "db1d59a7-bd74-4706-9079-d08c3b5ecdfe",
