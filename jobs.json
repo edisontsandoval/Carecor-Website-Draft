@@ -1,7 +1,24 @@
 {
- "checked": "2026-11-20T15:29-05:00",
- "count": 31,
+ "checked": "2026-11-20T16:33-05:00",
+ "count": 32,
  "jobs": [
+  {
+   "id": "693d407e-819c-43c7-8202-c484aff9f99c",
+   "t": "Patient Attendant - Casual",
+   "req": "PATIE003379",
+   "ft": false,
+   "cat": "Support Worker",
+   "d": "2026-11-20",
+   "loc": [
+    [
+     "Dartmouth",
+     "NS",
+     44.795,
+     -63.483
+    ]
+   ],
+   "b": "Carecor is looking for dedicated and compassionate Patient Attendants (PAs) to join our amazing team working in hospitals serving Dartmouth and surrounding areas.\n\nPatient Attendants (PA) are responsible to observe and assist with the care of one or two patients through simple comfort measures such as keeping the patient company or watching how they are doing. For each assignment, you will be in one facility for a fu"
+  },
   {
    "id": "b2c0cbe0-7d16-4f8c-b6eb-5e992a58f40d",
    "t": "Community Nurse",
