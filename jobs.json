@@ -1,7 +1,30 @@
 {
- "checked": "2026-11-22T17:30-05:00",
- "count": 32,
+ "checked": "2026-11-23T17:03-05:00",
+ "count": 29,
  "jobs": [
+  {
+   "id": "de3444cb-f817-49b9-948f-c4502b4384cd",
+   "t": "Speech Language Pathologist",
+   "req": "SPEEC003433",
+   "ft": false,
+   "cat": "Therapy Provider",
+   "d": "2026-11-23",
+   "loc": [
+    [
+     "Niagara Falls",
+     "ON",
+     43.119,
+     -79.088
+    ],
+    [
+     "St. Catharines",
+     "ON",
+     43.171,
+     -79.243
+    ]
+   ],
+   "b": "Carecor Health Services is seeking a compassionate, skilled, and client-focused Speech-Language Pathologist (SLP) to join our allied health team. In this role, you will assess, diagnose, and treat individuals experiencing speech, language, communication, cognitive-communication, and swallowing disorders across a variety of care settings, including clients' homes and community environments.\n\nThe successful candidate w"
+  },
   {
    "id": "693d407e-819c-43c7-8202-c484aff9f99c",
    "t": "Patient Attendant - Casual",
@@ -171,23 +194,6 @@
     ]
    ],
    "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) or Registered Nurse (RN) to support specialty medical clinics in long‑term care homes across the Greater Toronto Surrounding Areas. This role focuses on assisting with the administration of spasticity medications and providing high‑quality clinical and administrative support to physicians, LTC staff, and residents."
-  },
-  {
-   "id": "0bea7c2d-d7db-4284-82cb-32f055673749",
-   "t": "Personal Support Worker - Casual",
-   "req": "PERSO003336",
-   "ft": false,
-   "cat": "Support Worker",
-   "d": "2026-11-12",
-   "loc": [
-    [
-     "Hamilton",
-     "ON",
-     43.478,
-     -79.98
-    ]
-   ],
-   "b": "Carecor is looking for dedicated and compassionate Personal Support Workers to join our amazing team working in the Hamilton area hospitals. We’re ready when you are! \n\nUnder the direction of facility nursing staff, you will perform floor and observational care duties - helping to create an environment that promotes optimal physical, social, and emotional well-being for patients. For each assignment, you will be in o"
   },
   {
    "id": "26a97a43-d654-4e50-b4ad-65b9b1c27e20",
@@ -409,40 +415,6 @@
    "b": "Carecor is looking for dedicated and compassionate Registered Nurses (medical/surgical) to join our amazing team working in the Halifax Regional Municipality and surrounding area hospitals. We’re ready when you are! \n \nUnder the direction of the facility charge nurse or registered nurse, you will provide care according to the Nova Scotia College of Nursing, the Standards of Practice of Carecor, and the healthcare fac"
   },
   {
-   "id": "db1d59a7-bd74-4706-9079-d08c3b5ecdfe",
-   "t": "Registered Practical Nurse - Pediatrics",
-   "req": "REGIS003180",
-   "ft": true,
-   "cat": "Nurse",
-   "d": "2026-09-24",
-   "loc": [
-    [
-     "Barrie",
-     "ON",
-     44.361,
-     -79.611
-    ]
-   ],
-   "b": "Carecor Health Services is a trusted healthcare staffing and patient care solutions provider committed to connecting skilled healthcare professionals with leading hospitals, long-term care homes, community agencies, and healthcare organizations across Canada. For over 35 years, Carecor has been dedicated to delivering exceptional staffing support and high-quality patient care while fostering rewarding career opportun"
-  },
-  {
-   "id": "28bc74ee-7dc6-4fee-8cef-8708262df0b2",
-   "t": "Registered Practical Nurse - Pediatrics",
-   "req": "REGIS003259",
-   "ft": false,
-   "cat": "Nurse",
-   "d": "2026-09-24",
-   "loc": [
-    [
-     "Midland",
-     "ON",
-     44.749,
-     -79.889
-    ]
-   ],
-   "b": "Carecor Health Services is a trusted healthcare staffing and patient care solutions provider committed to connecting skilled healthcare professionals with leading hospitals, long-term care homes, community agencies, and healthcare organizations across Canada. For over 35 years, Carecor has been dedicated to delivering exceptional staffing support and high-quality patient care while fostering rewarding career opportun"
-  },
-  {
    "id": "96c83cea-a619-4453-a3b4-d74b6454c83e",
    "t": "Registered Practical Nurse (RPN) – Clinical Specialist",
    "req": "REGIS003258",
@@ -475,23 +447,6 @@
     ]
    ],
    "b": "Carecor is seeking dedicated and compassionate Personal Support Workers (PSWs) to join our community care team. In this role, you will travel to clients’ homes to provide high quality personal care and support that empowers individuals to live safely and independently in their own environment."
-  },
-  {
-   "id": "ee789ade-b847-46a7-a745-fe2fee88e9be",
-   "t": "Registered Nurse (RN) – Community Nursing",
-   "req": "TRAVE003185",
-   "ft": false,
-   "cat": "Nurse",
-   "d": "2026-09-10",
-   "loc": [
-    [
-     "Gore Bay",
-     "ON",
-     45.911,
-     -82.459
-    ]
-   ],
-   "b": "Carecor is looking for dedicated and compassionate Registered Nurse (RN) - Community who will provide comprehensive, patient-centered nursing care to individuals and families in community and home care settings. The RN works independently and collaboratively with interdisciplinary healthcare teams to assess, plan, implement, and evaluate care that supports clients in maintaining their health, independence, and qualit"
   },
   {
    "id": "d11a7b48-c23f-40f8-bd1d-456c58b69136",
