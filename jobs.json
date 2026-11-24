@@ -1,7 +1,24 @@
 {
- "checked": "2026-11-23T22:21-05:00",
- "count": 29,
+ "checked": "2026-11-24T15:39-05:00",
+ "count": 30,
  "jobs": [
+  {
+   "id": "0bea7c2d-d7db-4284-82cb-32f055673749",
+   "t": "Personal Support Worker - Casual",
+   "req": "PERSO003336",
+   "ft": false,
+   "cat": "Support Worker",
+   "d": "2026-11-24",
+   "loc": [
+    [
+     "Hamilton",
+     "ON",
+     43.478,
+     -79.98
+    ]
+   ],
+   "b": "Carecor is looking for dedicated and compassionate Personal Support Workers to join our amazing team working in the Hamilton area hospitals. We’re ready when you are! \n\nUnder the direction of facility nursing staff, you will perform floor and observational care duties - helping to create an environment that promotes optimal physical, social, and emotional well-being for patients. For each assignment, you will be in o"
+  },
   {
    "id": "de3444cb-f817-49b9-948f-c4502b4384cd",
    "t": "Speech Language Pathologist",
@@ -244,7 +261,7 @@
   },
   {
    "id": "a7aabddd-6e41-4dc9-a969-bde5cf86659b",
-   "t": "Occupational Therapist (Evergreen posting)",
+   "t": "Occupational Therapist",
    "req": "OCCUP003380",
    "ft": true,
    "cat": "Therapy Provider",
@@ -257,7 +274,7 @@
      -80.415
     ]
    ],
-   "b": "Carecor Health Services is looking for dedicated and compassionate Occupational Therapists to join our amazing team.\n\nAs an Occupational Therapist, you will work closely with clients to assess their physical, cognitive, and functional abilities, helping them achieve greater independence and quality of life. We are looking to build a pool of candidates for a future opportunity."
+   "b": "Carecor Health Services is looking for dedicated and compassionate Occupational Therapists to join our amazing team.\n\nAs an Occupational Therapist, you will work closely with clients to assess their physical, cognitive, and functional abilities, helping them achieve greater independence and quality of life."
   },
   {
    "id": "a1d8dc0d-e90d-4e9d-a05d-63f8db7af0a6",
