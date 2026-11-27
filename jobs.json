@@ -1,7 +1,24 @@
 {
- "checked": "2026-11-26T20:02-05:00",
+ "checked": "2026-11-27T14:28-05:00",
  "count": 30,
  "jobs": [
+  {
+   "id": "f3ba59a7-0318-4aa7-9a9a-c07a7b308690",
+   "t": "Travel Nurse - Medical/Surgical LPN",
+   "req": "TRAVE003450",
+   "ft": true,
+   "cat": "Nurse",
+   "d": "2026-11-27",
+   "loc": [
+    [
+     "Halifax",
+     "NS",
+     45.191,
+     -62.294
+    ]
+   ],
+   "b": "Carecor is looking for dedicated and compassionate Medical/Surgical Licensed Practical Nurses (LPNs) who are interested in travel opportunities across Nova Scotia. Join our team and bring your clinical experience to remote hospitals and healthcare facilities, where you can make a meaningful difference in the lives of patients and communities while gaining valuable experience in diverse healthcare settings. \n\nYou will"
+  },
   {
    "id": "4f0466d1-f1d4-47c2-a909-f02e592b42a4",
    "t": "Travel Nurse - Medical/Surgical RN",
@@ -430,23 +447,6 @@
     ]
    ],
    "b": "Carecor is looking for dedicated and compassionate Registered Nurses (medical/surgical) to join our amazing team working in the Halifax Regional Municipality and surrounding area hospitals. We’re ready when you are! \n \nUnder the direction of the facility charge nurse or registered nurse, you will provide care according to the Nova Scotia College of Nursing, the Standards of Practice of Carecor, and the healthcare fac"
-  },
-  {
-   "id": "96c83cea-a619-4453-a3b4-d74b6454c83e",
-   "t": "Registered Practical Nurse (RPN) – Clinical Specialist",
-   "req": "REGIS003258",
-   "ft": false,
-   "cat": "Nurse",
-   "d": "2026-09-24",
-   "loc": [
-    [
-     "Ottawa",
-     "ON",
-     45.206,
-     -76.016
-    ]
-   ],
-   "b": "Carecor Health Services is seeking a dedicated Registered Practical Nurse (RPN) to support specialty medical clinics in long term care homes across Ottawa, Ontario. This role focuses on assisting with the administration of spasticity medications and providing high quality clinical and administrative support to physicians, LTC staff, and residents."
   },
   {
    "id": "1878957a-615a-46e3-8f59-79d73f59b925",
